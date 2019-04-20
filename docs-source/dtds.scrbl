@@ -2,7 +2,7 @@
 
 @(require scriblib/figure)
 
-@title[#:tag "a" #:version "3.5.2"]{Appendix A. XML DTDs}
+@title[#:tag "dtds" #:version "3.5.2"]{Appendix A. XML DTDs}
 
 \section{DTD for the format of dictionaries}
 \label{ss:dtd_dics}

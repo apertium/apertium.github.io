@@ -2,7 +2,7 @@
 
 @(require scriblib/figure)
 
-@title[#:tag "b" #:version "3.5.2"]{Appendix B. Grammatical symbols used in the modules}
+@title[#:tag "symbols" #:version "3.5.2"]{Appendix B. Grammatical symbols used in the modules}
 
 \section[Dictionary symbols]{Grammatical symbols used in dictionaries}
 

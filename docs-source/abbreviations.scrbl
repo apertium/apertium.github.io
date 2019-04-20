@@ -2,7 +2,7 @@
 
 @(require scriblib/figure)
 
-@title[#:tag "c" #:version "3.5.2"]{Appendix C. Abbreviations used in the text}
+@title[#:tag "abbreviations" #:version "3.5.2"]{Appendix D. Abbreviations used in the text}
 
 \begin{description}
 \item[ANSI] American National Standards Institute; when used

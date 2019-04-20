@@ -87,10 +87,12 @@ The goal of this document is two-fold:
 
 @include-section["best.scrbl"]
 
-@include-section["a.scrbl"]
+@include-section["dtds.scrbl"]
 
-@include-section["b.scrbl"]
+@include-section["symbols.scrbl"]
 
-@include-section["c.scrbl"]
+@include-section["status.scrbl"]
+
+@include-section["abbreviations.scrbl"]
 
 @(generate-bibliography)
