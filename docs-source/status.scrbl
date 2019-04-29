@@ -236,7 +236,7 @@ apertium/apertium-swe : @(status-badge "https://travis-ci.org/apertium/apertium-
 
 apertium/apertium-uig : @(status-badge "https://travis-ci.org/apertium/apertium-uig.svg?branch=master")    @(status-badge "https://circleci.com/gh/apertium/apertium-uig/tree/master.svg?style=svg")
 
-apertium/apertium-tat : @(status-badge "https://travis-ci.org/apertium/apertium-tat.svg?branch=master")    @(status-badge "https://circleci.com/gh/apertium/apertium-tat/tree/master.svg?style=svg")
+apertium/apertium-tat : @(status-badge "https://travis-ci.org/apertium/apertium-tat.svg?branch=master")    @(status-badge "https://circleci.com/gh/apertium/apertium-tat/tree/master.svg?style=svg") @(status-badge "https://s3.eu-central-1.amazonaws.com/apertium/apertium-tat/cov.jam.svg") @(status-badge "https://s3.eu-central-1.amazonaws.com/apertium/apertium-tat/cov.udhr.svg") @(status-badge "https://s3.eu-central-1.amazonaws.com/apertium/apertium-tat/cov.bible.svg")
 
 apertium/apertium-urd : @(status-badge "https://travis-ci.org/apertium/apertium-urd.svg?branch=master")    @(status-badge "https://circleci.com/gh/apertium/apertium-urd/tree/master.svg?style=svg")
 
