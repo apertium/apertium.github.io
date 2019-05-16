@@ -8,12 +8,12 @@ Machine-Translation Platform Apertium&quot;" data-pltdoc="x">&larr; prev</a>&nbs
 Machine-Translation Platform Apertium&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="engine.html" title="forward to &quot;2 The shallow-transfer machine
 translation engine&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div><h3 x-source-module="(lib &quot;apertium-platform-doc/index.scrbl&quot;)" x-source-pkg="apertium-platform-doc" x-part-tag="&quot;intro&quot;">1<tt>&nbsp;</tt><a name="(part._intro)"></a>Introduction</h3><p>This documentation describes the Apertium platform, one of the
 open-source machine translation systems which originated within the
-project &ldquo;Open-Source Machine Translation for the Languages of Spain&rdquo;
-(&ldquo;Traducci&#243;n autom&#225;tica de c&#243;digo abierto para las lenguas del estado
-espa&#241;ol&rdquo;). It is a shallow-transfer machine translation system,
-initially designed for the translation between related language pairs,
-although some of its components have been also used in the
-deep-transfer architecture
+project &ldquo;Open-Source Machine Translation for the Languages of
+Spain&rdquo; (&ldquo;Traducci&#243;n autom&#225;tica de c&#243;digo abierto para las lenguas
+del estado Espa&#241;ol&rdquo;). It is a shallow-transfer machine translation
+system, initially designed for the translation between related
+language pairs, although some of its components have been also used
+in the deep-transfer architecture
 (<a href="https://github.com/matxin">Matxin</a>) that has been
 developed in the same project for the pair Spanish-Basque.</p><p>Existing machine translation systems available at present for the
 pairs <span class="stt">es</span>&ndash;<span class="stt">ca</span> and <span class="stt">es</span>&ndash;<span class="stt">gl</span> are mostly commercial or
@@ -24,67 +24,59 @@ single multilingual content management system.</p><p>One of the main novelties o
 it has been released under open-source licenses (in most cases, GNU
 GPL; some data still have a Creative Commons license) and is
 distributed free of charge. This means that anyone having the
-necessary computational and linguistic skills will be able to adapt or
-enhance the platform or the language-pair data to create a new machine
-translation system, even for other pairs of related languages. The
-licenses chosen make these improvements immediately available to
-everyone. We therefore expect that the introduction of this of
-open-source machine translation architecture will solve some of the
-mentioned problems (having different technologies for different pairs,
-closed-source architectures being hard to adapt to new uses, etc.) and
-promote the exchange of existing linguistic data through the use of
-the XML-based formats defined in this documentation. On the other
-hand, we think that it will help shift the current business model from
-a license-centered one to a services-centered one.</p><p>It is worth mentioning that &ldquo;Open-Source Machine Translation for the
+necessary computational and linguistic skills will be able to adapt
+or enhance the platform or the language-pair data to create a new
+machine translation system, even for other pairs of related
+languages. The licenses chosen make these improvements immediately
+available to everyone. We therefore expect that the introduction of
+this open-source machine translation architecture will solve some of
+the mentioned problems (having different technologies for different
+pairs, closed-source architectures being hard to adapt to new uses,
+etc.) and promote the exchange of existing linguistic data through
+the use of the XML-based formats defined in this documentation. On
+the other hand, we think that it will help shift the current business
+model from a license-centered one to a services-centered one.</p><p>It is worth mentioning that &ldquo;Open-Source Machine Translation for the
 Languages of Spain&rdquo; was the first large open-source machine
 translation project funded by the central Spanish Government, although
 the adoption of open-source software by the Spanish governments is not
-new.</p><p>\nota{Don&rsquo;t forget about the other funding agencies supporting open source MT; this needs some contextualization, relating to funding, etc. Mention later funding and refer to the appropriate section.}</p><p>This documentation describes in detail the characteristics of the
-Apertium platform, and is organized as follows:</p><p>\begin{itemize}
-\item Chapter \ref{ss:descrarq}: \textbf{general description} of the
-shallow-transfer machine translation system and of the modules that
-make it up.</p><p>\item Chapter \ref{se:flujodatos}: description of the \textbf{format
-of the data stream} that circulates from one module to the next one.</p><p>\item Chapter \ref{se:especificmodulos}: \textbf{specification of the
-modules} of the system. For each module there is a description of: the
-\textit{program} and its characteristics,  the \textit{format of the data}
-that the module uses, and the \textit{compilers}  used for it.
-This chapter is divided in the following sections:
-  \begin{itemize}
-  \item [-]Section \ref{ss:modproclex}: \emph{Lexical processing
-    modules}, where the morphological analyser, the lexical transfer
-    module, the morphological generator and the post-generator are
-    described (Section \ref{ss:funcproclex}), along with the format of
-    the dictionaries used by these modules (section
-    \ref{ss:diccionarios}) and their compilers (section
-    \ref{se:compiladoresdic})
-  \item [-]Section \ref{ss:tagger}: \emph{Part-of-speech Tagger},
-    which describes the tagger (Section \ref{functagger}) and the
-    format of the linguistic data used by the tagger (section
-    \ref{datostagger}.
-% MLF 20060328 elimina % y el compilador % correspondiente (apartado
-%\ref{ss:gentagger})</p><p>\nota{falta parlar del lextor, i afegir-ho a tot arreu on es parli
-dels m&#242;duls del sistema}</p><p>\item [-]Section \ref{se:pretransfer}: \emph{Pre-transfer module},
-    which describes the module that runs before the structural
-    transfer module to perform some operations on multiword units
-  \item [-]Section \ref{ss:transfer}: \emph{Structural transfer
-    module}, where there is a description of the program (section
-    \ref{functransfer}) and of the format of the structural transfer
-    rules (Section \ref{formatotransfer}).
-% MLF 20060328 % y el % compilador correspondiente (apartado
-% \ref{gentransfer})
-  \item [-]Section \ref{se:desformat}: \emph{De-formatter and
-    Re-formatter}, which describes these modules (section
-    \ref{ss:formato}), the rules for format processing (section
-    \ref{ss:reglasformato}) and how these modules are generated
-    (Section \ref{se:gendeformat})</p><p>\end{itemize}</p><p>\item Chapter \ref{se:instalacion}: it describes the way to
-\textbf{install the system} and to \textbf{run the translator}.</p><p>\item Chapter \ref{se:datosling}: here you will find an explanation of
-  how to \textbf{modify the linguistic data} used by the translator,
-  that is, the dictionaries, the part-of-speech disambiguation data
-  and the structural transfer rules created in this project for
-  Spanish, Catalan and Galician. Furthermore, it contains a brief
-  description of the characteristics of the
-available data for these three language pairs.
-\nota{I would try to be more general, and perhaps remove this section or update with some other pairs. Any ideas on how to do this?}</p><p>\nota{Es diuen a tot arreu els noms de programa i en quin paquet
+new.</p><p>This documentation describes in detail the characteristics of the
+Apertium platform, and is organized as follows:</p><ul><li><p><a href="engine.html" data-pltdoc="x">Chapter 2</a>: <span style="font-weight: bold">general description</span> of
+the shallow-transfer machine translation system and of the modules
+that make it up.</p></li><li><p><a href="stream-format-spec.html" data-pltdoc="x">Chapter 3</a>: description of the
+<span style="font-weight: bold">format of the data stream</span> that circulates from one module to
+the next one.</p></li><li><p><a href="modules-spec.html" data-pltdoc="x">Chapter 4</a>: <span style="font-weight: bold">specification of the
+modules</span> of the system. For each module there is a description of:
+the <span style="font-style: italic">program</span> and its characteristics, the <span style="font-style: italic">format of
+the data</span> that the module uses, and the <span style="font-style: italic">compilers</span> used for
+it. This chapter is divided in the following sections:</p><ul><li><p><font class="badlink">Section 4.1</font>: <span style="font-style: italic">Lexical
+processing modules</span>, where the morphological analyser, the lexical
+transfer module, the morphological generator and the post-generator
+are described (<font class="badlink">Section 4.1.1</font>), along
+with the format of the dictionaries used by these modules
+(<font class="badlink">Section 4.1.2</font>) and their compilers
+(<font class="badlink">Section 4.1.3</font>).</p></li><li><p><font class="badlink">Section 4.2</font>: <span style="font-style: italic">Part-of-speech
+Tagger</span>, which describes the tagger (Section
+<font class="badlink">Section 4.2.1</font>) and the format of the
+linguistic data used by the tagger (Section
+<font class="badlink">Section 4.2.2</font>).</p></li><li><p><font class="badlink">Section 4.3</font>: <span style="font-style: italic">Pre-transfer
+module</span>, which describes the module that runs before the structural
+transfer module to perform some operations on multiword units</p></li><li><p><font class="badlink">Section 4.5</font>: <span style="font-style: italic">Structural
+transfer module</span>, where there is a description of the program
+(<font class="badlink">Section 4.5.2</font>) and of the format of the
+structural transfer rules (<font class="badlink">Section
+4.5.4</font>).</p></li></ul></li><li><p><font class="badlink">Section 4.6</font>: <span style="font-style: italic">De-formatter and
+Re-formatter</span>, which describes these modules
+(<font class="badlink">Section 4.6.1</font>, the rules for format
+processing (<font class="badlink">Section 4.6.2</font>) and how
+these modules are generated (<font class="badlink">Section
+4.6.3</font></p></li><li><p>Chapter \ref{se:instalacion}: it describes the way to
+\textbf{install the system} and to \textbf{run the translator}.</p></li><li><p>Chapter \ref{se:datosling}: here you will find an explanation of
+how to \textbf{modify the linguistic data} used by the translator,
+that is, the dictionaries, the part-of-speech disambiguation data
+and the structural transfer rules created in this project for
+Spanish, Catalan and Galician. Furthermore, it contains a brief
+description of the characteristics of the
+available data for these three language pairs.</p></li></ul><p>\nota{I would try to be more general, and perhaps remove this section or update with some other pairs. Any ideas on how to do this?}</p><p>\nota{Es diuen a tot arreu els noms de programa i en quin paquet
 estan?}</p><p>\end{itemize}</p><p>The files which this documentation refers to can be found at and
 downloaded from the project web page in Sourceforge:
 \url{http://sourceforge.net/projects/apertium/}.  From this page you can
@@ -98,12 +90,12 @@ language pairs can also be tested on the Internet at
 contribution of many people and institutions:
 \begin{itemize}
 \item The Spanish Ministry of Industry, Commerce and Tourism has
-  funded the development of this toolbox through the projects
-  &ldquo;Open-Source Machine Translation for the Languages of Spain&rdquo;, code
-  FIT-340101-2004-3, and its extension FIT-340001-2005-2, and
-  &ldquo;EurOpenTrad: Open-Source Advanced Machine Translation for the
-  European Integration of the Languages of Spain&rdquo;, code
-  FIT-350101-2006-5, all of them belonging to the PROFIT program.</p><p>\item Workers and scholars from other machine translation projects at
+funded the development of this toolbox through the projects
+&ldquo;Open-Source Machine Translation for the Languages of Spain&rdquo;, code
+FIT-340101-2004-3, and its extension FIT-340001-2005-2, and
+&ldquo;EurOpenTrad: Open-Source Advanced Machine Translation for the
+European Integration of the Languages of Spain&rdquo;, code
+FIT-350101-2006-5, all of them belonging to the PROFIT program.</p><p>\item Workers and scholars from other machine translation projects at
 the Universitat d&rsquo;Alacant: M&#237;riam Antunes Scalco, Carme Armentano i
 Oller, Ra&#252;l Canals i Marote, Alicia Garrido Alenda, Patr&#237;cia Gilabert
 i Zarco, Maribel Guardiola i Savall, Javier Herrero Vicente, Amaia
