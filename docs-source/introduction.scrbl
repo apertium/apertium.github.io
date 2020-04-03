@@ -1,17 +1,33 @@
 #lang scribble/base
 
+@require[scribble/core
+         scribble/html-properties
+         scriblib/footnote]
+
+@(define strikethrough
+  (make-style "strikethrough"
+    (list (make-css-addition "strikethrough.css"))))
+ 
+@define-footnote[my-note make-my-note]
+
 @title[#:tag "intro" #:version "3.5.2"]{Introduction}
 
-This documentation describes the Apertium platform, one of the
-open-source machine translation systems which originated within the
-project ``Open-Source Machine Translation for the Languages of
-Spain'' (``Traducción automática de código abierto para las lenguas
-del estado Español''). It is a shallow-transfer machine translation
-system, initially designed for the translation between related
-language pairs, although some of its components have been also used
-in the deep-transfer architecture
-(@hyperlink["https://github.com/matxin"]{Matxin}) that has been
-developed in the same project for the pair Spanish-Basque.
+This documentation describes the Apertium platform, one of the open-source
+machine translation systems which originated within the project ``Open-Source
+Machine Translation for the Languages of Spain'' (``Traducción automática de
+código abierto para las lenguas del estado Español''). It is a shallow-transfer
+machine translation system, initially designed for the translation between
+related language pairs, although some of its components have been also used in
+the deep-transfer architecture
+(@hyperlink["https://github.com/matxin"]{Matxin}) that has been developed in
+the same project for the pair Spanish-Basque. @elem[#:style
+strikethrough]{@italic{Apertium} can translate at present between the pairs
+Spanish-Galician, Spanish-Catalan@my-note{With the name @italic{Catalan} we
+refer also to the Valencian dialectal variant of this language.},
+Catalan-Occitan, Catalan-French, and can be used to build translators between
+other related language pairs, such as Danish-Swedish, Czech-Slovak, etc.}
+
+@make-my-note[]
 
 Existing machine translation systems available at present for the
 pairs @tt{es}--@tt{ca} and @tt{es}--@tt{gl} are mostly commercial or
