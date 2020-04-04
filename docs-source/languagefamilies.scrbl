@@ -49,13 +49,15 @@ apertium-kum : @(monoling-status-badges "kum")
 
 apertium-nog : @(monoling-status-badges "nog")
 
+apertium-ota : @(monoling-status-badges "ota")
+
 apertium-sah : @(monoling-status-badges "sah")
 
 apertium-tat : @(monoling-status-badges "tat")
 
-apertium-tur : @(monoling-status-badges "tur")
-
 apertium-tuk : @(monoling-status-badges "tuk")
+
+apertium-tur : @(monoling-status-badges "tur")
 
 apertium-tyv : @(monoling-status-badges "tyv")
 
