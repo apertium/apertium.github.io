@@ -7,7 +7,17 @@
 @(define strikethrough
   (make-style "strikethrough"
     (list (make-css-addition "strikethrough.css"))))
- 
+
+@(define (sout . words)
+   (elem #:style strikethrough words))
+
+@(define (colorize #:color c . content)
+  (elem #:style (style #f (list (color-property c)))
+        content))
+
+@(define (red . content)
+  (colorize #:color "red" content))
+
 @define-footnote[my-note make-my-note]
 
 @title[#:tag "intro" #:version "3.5.2"]{Introduction}
@@ -26,6 +36,11 @@ Spanish-Galician, Spanish-Catalan@my-note{With the name @italic{Catalan} we
 refer also to the Valencian dialectal variant of this language.},
 Catalan-Occitan, Catalan-French, and can be used to build translators between
 other related language pairs, such as Danish-Swedish, Czech-Slovak, etc.}
+@red{50 pairs have been released and are considered to be stable. They are
+listed on the @hyperlink["http://wiki.apertium.org"]{wiki} of the project and
+are showcased on @hyperlink["https://www.apertium.org"]{www.apertium.org}. Even
+more translators -- in the beta stage of development -- can be found on
+@hyperlink["https://beta.apertium.org"]{beta.apertium.org}.}
 
 @make-my-note[]
 
