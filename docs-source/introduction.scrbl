@@ -106,18 +106,16 @@ it. This chapter is divided in the following sections:
 
 @itemlist[
 
-  @item{@seclink["modproclex"]{Section 4.1}: @italic{Lexical
-  processing modules}, where the morphological analyser, the lexical
-  transfer module, the morphological generator and the post-generator
-  are described (@seclink["ss:funcproclex"]{Section 4.1.1}), along
-  with the format of the dictionaries used by these modules
-  (@seclink["ss:diccionarios"]{Section 4.1.2}) and their compilers
-  (@seclink["se:compiladoresdic"]{Section 4.1.3}).}
+  @item{@seclink["modproclex"]{Section 4.1}: @italic{Lexical processing
+  modules}, where the morphological analyser, the lexical transfer module, the
+  morphological generator and the post-generator are described
+  (@seclink["ss:funcproclex"]{Section 4.1.1}), along with the format of the
+  dictionaries used by these modules (@seclink["ss:diccionarios"]{Section
+  4.1.2}) and their compilers (@seclink["se:compiladoresdic"]{Section 4.1.3}).}
 
-  @item{@seclink["ss:tagger"]{Section 4.2}: @italic{Part-of-speech
-  Tagger}, which describes the tagger (Section
-  @seclink["functagger"]{Section 4.2.1}) and the format of the
-  linguistic data used by the tagger (Section
+  @item{@seclink["ss:tagger"]{Section 4.2}: @italic{Part-of-speech Tagger},
+  which describes the tagger (Section @seclink["functagger"]{Section 4.2.1})
+  and the format of the linguistic data used by the tagger (Section
   @seclink["datostagger"]{Section 4.2.2}).}
 
 @; MLF 20060328 elimina % y el compilador % correspondiente (apartado
@@ -126,92 +124,79 @@ it. This chapter is divided in the following sections:
 @; \nota{falta parlar del lextor, i afegir-ho a tot arreu on es parli
 @; dels mòduls del sistema}
 
-  @item{@seclink["se:pretransfer"]{Section 4.3}: @italic{Pre-transfer
-  module}, which describes the module that runs before the structural
-  transfer module to perform some operations on multiword units}
+  @item{@seclink["se:pretransfer"]{Section 4.3}: @italic{Pre-transfer module},
+  which describes the module that runs before the structural transfer module to
+  perform some operations on multiword units}
 
-  @item{@seclink["ss:transfer"]{Section 4.5}: @italic{Structural
-  transfer module}, where there is a description of the program
-  (@seclink["functransfer"]{Section 4.5.2}) and of the format of the
-  structural transfer rules (@seclink["formatotransfer"]{Section
-  4.5.4}).}]}
+  @item{@seclink["ss:transfer"]{Section 4.5}: @italic{Structural transfer
+  module}, where there is a description of the program
+  (@seclink["functransfer"]{Section 4.5.2}) and of the format of the structural
+  transfer rules (@seclink["formatotransfer"]{Section 4.5.4}).}]}
 
 @; % MLF 20060328 % y el % compilador correspondiente (apartado %
 @; \ref{gentransfer})
 
-@item{@seclink["se:desformat"]{Section 4.6}: @italic{De-formatter and
-Re-formatter}, which describes these modules
-(@seclink["ss:formato"]{Section 4.6.1}, the rules for format
-processing (@seclink["ss:reglasformato"]{Section 4.6.2}) and how
-these modules are generated (@seclink["se:gendeformat"]{Section
-4.6.3}}
+  @item{@seclink["se:desformat"]{Section 4.6}: @italic{De-formatter and
+  Re-formatter}, which describes these modules (@seclink["ss:formato"]{Section
+  4.6.1}, the rules for format processing (@seclink["ss:reglasformato"]{Section
+  4.6.2}) and how these modules are generated
+  (@seclink["se:gendeformat"]{Section 4.6.3})}
 
-@item{Chapter \ref{se:instalacion}: it describes the way to 
-\textbf{install the system} and to \textbf{run the translator}.}
+@item{@seclink["se:instalacion"]{Chapter 5}: it describes the way to
+@bold{install the system} and to @bold{run the translator}.}
 
-@item{Chapter \ref{se:datosling}: here you will find an explanation of
-how to \textbf{modify the linguistic data} used by the translator,
-that is, the dictionaries, the part-of-speech disambiguation data
-and the structural transfer rules created in this project for
-Spanish, Catalan and Galician. Furthermore, it contains a brief
-description of the characteristics of the
-available data for these three language pairs.}]
+@item{@seclink["se:datosling"]{Chapter 6}: here you will find an explanation of
+how to @bold{modify the linguistic data} used by the translator, that is, the
+dictionaries, the part-of-speech disambiguation data and the structural
+transfer rules created in this project for Spanish, Catalan, Galician @red{and
+many other languages}. Furthermore, it contains a brief description of the
+characteristics of the available data for these @sout{three} language pairs.}]
 
-\nota{I would try to be more general, and perhaps remove this section or update with some other pairs. Any ideas on how to do this?}
-
+@;{\nota{I would try to be more general, and perhaps remove this section or update with some other pairs. Any ideas on how to do this?}
 
 \nota{Es diuen a tot arreu els noms de programa i en quin paquet
-estan?}
+estan?}}
 
-
-\end{itemize}
-
-
-The files which this documentation refers to can be found at and
-downloaded from the project web page in Sourceforge:
-\url{http://sourceforge.net/projects/apertium/}.  From this page you can
-download the packages needed for installation, as well as view the
-individual files in the SVN (main) and CVS (residual) repositories of
-the project.  The machine translation systems for the different
+The files which this documentation refers to can be found at and downloaded
+from the project web page @sout{in Sourceforge} at Github:
+@hyperlink["https://github.com/apertium"]{https://github.com/apertium}. From
+this page you can download the packages needed for installation, as well as
+view the individual files in the @sout{SVN (main) and CVS (residual)}
+repositories of the project. The machine translation systems for the different
 language pairs can also be tested on the Internet at
-\url{http://www.apertium.org/}.
+@hyperlink["https://www.apertium.org/"]{https://www.apertium.org/} (released
+versions) @red{or
+@hyperlink["https://beta.apertium.org"]{https://beta.apertium.org} (nightly
+versions). Besides translation modes proper, the latter website also allows to
+test individual morphological analysers or generators}.
 
-\nota{Shouldn't we mention the debugging interfaces?}
+@;{\nota{Shouldn't we mention the debugging interfaces?}
 \nota{Should we define SVN and CVS?}
 
-%El presente documento tiene algunas secciones que están incompletas o
-%no han sido escritas todavía.
-
+%El presente documento tiene algunas secciones que están incompletas o no han
+%sido escritas todavía.}
 
 \paragraph*{Acknowledgements:} The present work has benefited from the
-contribution of many people and institutions:
-\begin{itemize}
-\item The Spanish Ministry of Industry, Commerce and Tourism has
-funded the development of this toolbox through the projects
-``Open-Source Machine Translation for the Languages of Spain'', code
-FIT-340101-2004-3, and its extension FIT-340001-2005-2, and
-``EurOpenTrad: Open-Source Advanced Machine Translation for the
-European Integration of the Languages of Spain'', code
+contribution of many people and institutions: \begin{itemize} \item The Spanish
+Ministry of Industry, Commerce and Tourism has funded the development of this
+toolbox through the projects ``Open-Source Machine Translation for the
+Languages of Spain'', code FIT-340101-2004-3, and its extension
+FIT-340001-2005-2, and ``EurOpenTrad: Open-Source Advanced Machine Translation
+for the European Integration of the Languages of Spain'', code
 FIT-350101-2006-5, all of them belonging to the PROFIT program.
 
-
-
-\item Workers and scholars from other machine translation projects at
-the Universitat d'Alacant: Míriam Antunes Scalco, Carme Armentano i
-Oller, Raül Canals i Marote, Alicia Garrido Alenda, Patrícia Gilabert
-i Zarco, Maribel Guardiola i Savall, Javier Herrero Vicente, Amaia
-Iturraspe Bellver, Sandra Montserrat i Buendia, Hermínia Pastor Pina,
-Antonio Pertusa Ibáñez, Francisco Javier Ramos Salas, Marcial Samper
-Asensio and Miguel Sánchez Molina.
-\item The companies and institutions that have funded these other
-machine translation projects: Spanish Ministry of Science and
-Technology, Caja de Ahorros del Mediterráneo, Universitat d'Alacant
-and Portal Universia, S.A.
-\item Iñaki Alegria, from the Ixa group of the Euskal Herriko
-Unibertsitatea (University of the Basque Country), for his close
-reading of previous versions of this document.
-\item Google, who, through the Google Summer of Code programme,
-funded the development of several new modules.
-\end{itemize}
+\item Workers and scholars from other machine translation projects at the
+Universitat d'Alacant: Míriam Antunes Scalco, Carme Armentano i Oller, Raül
+Canals i Marote, Alicia Garrido Alenda, Patrícia Gilabert i Zarco, Maribel
+Guardiola i Savall, Javier Herrero Vicente, Amaia Iturraspe Bellver, Sandra
+Montserrat i Buendia, Hermínia Pastor Pina, Antonio Pertusa Ibáñez, Francisco
+Javier Ramos Salas, Marcial Samper Asensio and Miguel Sánchez Molina.  \item
+The companies and institutions that have funded these other machine translation
+projects: Spanish Ministry of Science and Technology, Caja de Ahorros del
+Mediterráneo, Universitat d'Alacant and Portal Universia, S.A.  \item Iñaki
+Alegria, from the Ixa group of the Euskal Herriko Unibertsitatea (University of
+the Basque Country), for his close reading of previous versions of this
+document.  \item Google, who, through the Google Summer of Code programme,
+funded the development of several new modules.  \end{itemize}
 
 @make-my-note[]
