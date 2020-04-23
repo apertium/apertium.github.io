@@ -2,7 +2,7 @@
 
 @(require scriblib/figure)
 
-@title[#:tag "modules-spec" #:version "3.5.2"]{Modules specification}
+@title[#:tag "modules" #:version "3.5.2"]{Modules specification}
 
 \section{Lexical processing modules}
 \label{ss:modproclex}

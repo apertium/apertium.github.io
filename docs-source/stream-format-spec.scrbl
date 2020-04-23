@@ -2,7 +2,7 @@
 
 @(require scriblib/figure)
 
-@title[#:tag "stream-format-spec" #:version "3.5.2"]{Format
+@title[#:tag "stream-format" #:version "3.5.2"]{Format
 specification of the data stream between modules}
 
 @section{Introduction}
