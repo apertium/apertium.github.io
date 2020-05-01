@@ -83,8 +83,6 @@ software by the Spanish governments is not new.
 MT; this needs some contextualization, relating to funding, etc. Mention later
 funding and refer to the appropriate section.}}
 
-@;{Kudos to Google Summer of Code}
-
 This documentation describes in detail the characteristics of the Apertium
 platform, and is organized as follows:
 
@@ -180,27 +178,36 @@ define SVN and CVS?}
 %El presente documento tiene algunas secciones que están incompletas o no han
 %sido escritas todavía.}
 
-\paragraph*{Acknowledgements:} The present work has benefited from the
-contribution of many people and institutions: \begin{itemize} \item The Spanish
-Ministry of Industry, Commerce and Tourism has funded the development of this
-toolbox through the projects ``Open-Source Machine Translation for the
-Languages of Spain'', code FIT-340101-2004-3, and its extension
-FIT-340001-2005-2, and ``EurOpenTrad: Open-Source Advanced Machine Translation
-for the European Integration of the Languages of Spain'', code
-FIT-350101-2006-5, all of them belonging to the PROFIT program.
+@subsubsub*section{Acknowledgements:} The present work has benefited from the
+contribution of many people and institutions:
 
-\item Workers and scholars from other machine translation projects at the
+@itemlist[
+
+@item{The Spanish Ministry of Industry, Commerce and Tourism has funded the
+development of this toolbox through the projects ``Open-Source Machine
+Translation for the Languages of Spain'', code FIT-340101-2004-3, and its
+extension FIT-340001-2005-2, and ``EurOpenTrad: Open-Source Advanced Machine
+Translation for the European Integration of the Languages of Spain'', code
+FIT-350101-2006-5, all of them belonging to the PROFIT program.}
+
+@item{Workers and scholars from other machine translation projects at the
 Universitat d'Alacant: Míriam Antunes Scalco, Carme Armentano i Oller, Raül
 Canals i Marote, Alicia Garrido Alenda, Patrícia Gilabert i Zarco, Maribel
 Guardiola i Savall, Javier Herrero Vicente, Amaia Iturraspe Bellver, Sandra
 Montserrat i Buendia, Hermínia Pastor Pina, Antonio Pertusa Ibáñez, Francisco
-Javier Ramos Salas, Marcial Samper Asensio and Miguel Sánchez Molina.  \item
-The companies and institutions that have funded these other machine translation
-projects: Spanish Ministry of Science and Technology, Caja de Ahorros del
-Mediterráneo, Universitat d'Alacant and Portal Universia, S.A.  \item Iñaki
-Alegria, from the Ixa group of the Euskal Herriko Unibertsitatea (University of
-the Basque Country), for his close reading of previous versions of this
-document.  \item Google, who, through the Google Summer of Code programme,
-funded the development of several new modules.  \end{itemize}
+Javier Ramos Salas, Marcial Samper Asensio and Miguel Sánchez Molina.}
+
+@item{The companies and institutions that have funded these other machine
+translation projects: Spanish Ministry of Science and Technology, Caja de
+Ahorros del Mediterráneo, Universitat d'Alacant and Portal Universia, S.A.}
+
+@item{Iñaki Alegria, from the Ixa group of the Euskal Herriko Unibertsitatea
+(University of the Basque Country), for his close reading of previous versions
+of this document.}
+
+@item{Google, who, through the Google Summer of Code and Google Code-In
+programmes, funded the development of several new modules.}
+
+]
 
 @make-my-note[]
