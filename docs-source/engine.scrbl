@@ -34,16 +34,16 @@ approach with very interesting results. The Apertium architecture uses
 finite-state transducers for lexical processing, hidden Markov models for
 part-of-speech tagging and finite-state-based chunking for structural transfer.
 
-The translation engine consists of an @sout{8-module} 8-to-12 module @emph{assembly line},
-which is represented in @Figure-ref["fig:modules"]. To ease diagnosis and
-independent testing, modules communicate between them using text streams.  This
-way, the input and output of the modules can be checked at any moment and, when
-an error in the translation process is detected, it is easy to test the output
-of each module separately to track down the origin of the error. At the same
-time, communication via text allows for some of the modules to be used in
-isolation, independently from the rest of the MT system, for other
-natural-language processing tasks, and enables the construction of prototypes
-with modified or additional modules.
+The translation engine consists of an @sout{8-module} @red{8-to-12 module}
+@emph{assembly line}, which is represented in @Figure-ref["fig:modules"]. To
+ease diagnosis and independent testing, modules communicate between them using
+text streams. This way, the input and output of the modules can be checked at
+any moment and, when an error in the translation process is detected, it is
+easy to test the output of each module separately to track down the origin of
+the error. At the same time, communication via text allows for some of the
+modules to be used in isolation, independently from the rest of the MT system,
+for other natural-language processing tasks, and enables the construction of
+prototypes with modified or additional modules.
 
 We decided to encode linguistic data files in
 XML@footnote{@url{http://www.w3.org/XML/}}-based formats due to its
@@ -59,58 +59,65 @@ and annotated corpora.
         shallow-transfer machine translation system. Many monolingual packages
         in Apertium have both a statistical and Constraint Grammar-based
         morphological disambiguator. The 'discontiguous multioword processing'
-        module has been introduced in 2018 and is optional. The current
-        'lexical selection module' has been added in 2012. The number and type
-        of structural transfer modules can vary from a single 'chunker' module,
-        to a three-stage, 'chunker-interchunk-postchunk' structural transfer
-        with several modules at each stage."
+        module, also called apertium-separable, has been introduced in 2018 and
+        is optional. The current 'lexical selection module' has been added in
+        2012. The number and type of structural transfer modules can vary from
+        a single 'chunker' module, to a three-stage,
+        'chunker-interchunk-postchunk' structural transfer with several modules
+        at each stage. There is also alternative transfer module called
+        apertium-recursive, which has been developed in 2019."
 	
 	@image["Apertium_system_architecture.png" #:scale 0.3] #:style
 	center-figure-style ]
 
 The modules Apertium consists of are the following:
 
-\begin{itemize}
-\item The \emph{de-formatter}, which separates the text to be
-translated from the format information (RTF, HTML, etc.); its
-specification can be found in Section \ref{ss:formato}. Format
-information is encapsulated so that the rest of the modules treat it
-as blanks between words. For example, for the HTML text in Spanish:
-\begin{alltt}
- es <em>una señal</em>
-\end{alltt} 
-("it is a sign") the de-formatter encapsulates in brackets
-the HTML tags and gives the output:
-\begin{alltt} 
+@itemlist[
+
+@item{The @a-module{de-formatter}, which separates the text to be translated
+from the format information (RTF, HTML, etc.); its specification can be found
+in @seclink["format"]{Section 4.6.1}. Format information is encapsulated so
+that the rest of the modules treat it as blanks between words. For example, for
+the HTML text in Spanish:
+
+@verbatim{
+es <em>una señal</em>
+}
+
+(``it is a sign'') the de-formatter encapsulates in brackets the HTML tags and
+gives the output:
+
+@verbatim{
 es [<em>]una señal[</em>]
-\end{alltt} 
-The character sequences in brackets are treated by the
-rest of the modules as simple blanks between words.
-\item \label{pg:FSFL} The \emph{morphological analyser}, which
-  tokenizes the text in \emph{surface forms} (SF) (lexical units as
-  they appear in texts) and delivers, for each SF, one or more
-  \emph{lexical forms} (LF) consisting of \emph{lemma} (the base form
-  commonly used in classic dictionary entries), the \emph{lexical
-  category} (noun, verb, preposition, etc.) and morphological
-  inflection information (number, gender, person, tense,
-  etc.). Tokenization of a text in SFs is not straightforward due to
-  the existence, on the one hand, of contractions (in Spanish,
-  \emph{del}, \emph{teniéndolo}, \emph{vámonos}; in English,
-  \emph{didn't}, \emph{can't}) and, on the other hand, of lexical
-  units made of more than one word (in Spanish, \emph{a pesar de},
-  \emph{echó de menos}; in English, \emph{in front of}, \emph{taken
-  into account}). The morphological analyser is able to analyse these
-  complex SFs and treat them appropriately so that they can be
-  processed by the next modules. In the case of contractions, the
-  system reads a single surface form and gives as output a sequence of
-  two or more lexical forms (for instance, the Spanish
-  preposition-article contraction \emph{del} would be analysed into
-  two lexical forms, one for the preposition \emph{de} and another one
-  for the article \emph{el}). Lexical units made of more than one word
-  (multiwords) are treated as single lexical forms and processed
-  specifically according to its type.\footnote{For more information
-  about the treatment of multiwords, please refer to page
-  ~\pageref{ss:multipalabras}.}
+}
+
+The character sequences in brackets are treated by the rest of the modules as
+simple blanks between words.}
+
+@item{The @a-module{morphological analyser}, which tokenizes the text in
+  @italic{surface forms} (SF) (lexical units as they appear in texts) and
+  delivers, for each SF, one or more @italic{lexical forms} (LF) consisting of
+  @italic{lemma} (the base form commonly used in classic dictionary entries),
+  the @italic{lexical category} (noun, verb, preposition, etc.) and
+  morphological inflection information (number, gender, person, tense,
+  etc.). Tokenization of a text in SFs is not straightforward due to the
+  existence, on the one hand, of contractions (in Spanish, @italic{del},
+  @italic{teniéndolo}, @italic{vámonos}; in English, @italic{didn't},
+  @italic{can't}) and, on the other hand, of lexical units made of more than
+  one word (in Spanish, @italic{a pesar de}, @italic{echó de menos}; in
+  English, @italic{in front of}, @italic{taken into account}). The
+  morphological analyser is able to analyse these complex SFs and treat them
+  appropriately so that they can be processed by the next modules. In the case
+  of contractions, the system reads a single surface form and gives as output a
+  sequence of two or more lexical forms (for instance, the Spanish
+  preposition-article contraction @italic{del} would be analysed into two
+  lexical forms, one for the preposition @italic{de} and another one for the
+  article @italic{el}). Lexical units made of more than one word (multiwords)
+  are treated as single lexical forms and processed specifically according to
+  its type.@footnote{For more information about the treatment of multiwords,
+  please refer to page ~\pageref{ss:multipalabras}.}}
+
+]
 
 Upon receiving as input the example text from the previous module, the
 morphological analyser would deliver:
