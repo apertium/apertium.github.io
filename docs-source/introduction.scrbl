@@ -1,22 +1,7 @@
 #lang scribble/base
 
-@require[scribble/core
-         scribble/html-properties
-         scriblib/footnote]
-
-@(define strikethrough
-  (make-style "strikethrough"
-    (list (make-css-addition "strikethrough.css"))))
-
-@(define (sout . words)
-   (elem #:style strikethrough words))
-
-@(define (colorize #:color c . content)
-  (elem #:style (style #f (list (color-property c)))
-        content))
-
-@(define (red . content)
-  (colorize #:color "red" content))
+@require[scriblib/footnote
+	 "util.rkt"]
 
 @define-footnote[my-note make-my-note]
 
