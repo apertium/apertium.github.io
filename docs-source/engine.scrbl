@@ -171,7 +171,7 @@ delivers the corresponding target language (TL) lexical form. @sout{The
 dictionary contains a single equivalent for each SL lexical form; that is, no
 word-sense disambiguation is performed.} @red{The dictionary can contain
 multiple translations for each SL lexical form. The next module in the pipeline
-@a-module{lexical selector} -- will pick the translation equivalent that is
+-- @a-module{lexical selector} -- will pick the translation equivalent that is
 most appropriate.}  Multiwords are translated as a single unit. The lexical
 forms in the running example would be translated into Catalan as follows:
 
