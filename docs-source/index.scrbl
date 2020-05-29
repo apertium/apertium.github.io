@@ -81,10 +81,6 @@ The goal of this document is two-fold:
 
 @include-section["data-insertion.scrbl"]
 
-@include-section["../../apertium-lex-tools/docs/index.scrbl"]
-
-@include-section["../../apertium-separable/docs/index.scrbl"]
-
 @include-section["best.scrbl"]
 
 @include-section["dtds.scrbl"]
