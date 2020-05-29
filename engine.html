@@ -63,56 +63,42 @@ gives the output:</p><p><table cellspacing="0" cellpadding="0" class="SVerbatim"
 simple blanks between words.</p></li><li><p>The <span style="font-style: italic">morphological analyser</span>, which tokenizes the text in
 <span style="font-style: italic">surface forms</span> (SF) (lexical units as they appear in texts) and
 delivers, for each SF, one or more <span style="font-style: italic">lexical forms</span> (LF) consisting of
-<span style="font-style: italic">lemma</span> (the base form commonly used in classic dictionary entries),
-the <span style="font-style: italic">lexical category</span> (noun, verb, preposition, etc.) and
-morphological inflection information (number, gender, person, tense,
-etc.). Tokenization of a text in SFs is not straightforward due to the
-existence, on the one hand, of contractions (in Spanish, <span style="font-style: italic">del</span>,
-<span style="font-style: italic">teni&#233;ndolo</span>, <span style="font-style: italic">v&#225;monos</span>; in English, <span style="font-style: italic">didn&rsquo;t</span>,
-<span style="font-style: italic">can&rsquo;t</span>) and, on the other hand, of lexical units made of more than
-one word (in Spanish, <span style="font-style: italic">a pesar de</span>, <span style="font-style: italic">ech&#243; de menos</span>; in
-English, <span style="font-style: italic">in front of</span>, <span style="font-style: italic">taken into account</span>). The
+<span style="font-style: italic">lemma</span> (the base form commonly used in classic dictionary entries), the
+<span style="font-style: italic">lexical category</span> (noun, verb, preposition, etc.) and morphological
+inflection information (number, gender, person, tense, etc.). Tokenization of a
+text in SFs is not straightforward due to the existence, on the one hand, of
+contractions (in Spanish, <span style="font-style: italic">del</span>, <span style="font-style: italic">teni&#233;ndolo</span>, <span style="font-style: italic">v&#225;monos</span>;
+in English, <span style="font-style: italic">didn&rsquo;t</span>, <span style="font-style: italic">can&rsquo;t</span>) and, on the other hand, of lexical
+units made of more than one word (in Spanish, <span style="font-style: italic">a pesar de</span>, <span style="font-style: italic">ech&#243;
+de menos</span>; in English, <span style="font-style: italic">in front of</span>, <span style="font-style: italic">taken into account</span>). The
 morphological analyser is able to analyse these complex SFs and treat them
-appropriately so that they can be processed by the next modules. In the case
-of contractions, the system reads a single surface form and gives as output a
+appropriately so that they can be processed by the next modules. In the case of
+contractions, the system reads a single surface form and gives as output a
 sequence of two or more lexical forms (for instance, the Spanish
-preposition-article contraction <span style="font-style: italic">del</span> would be analysed into two
-lexical forms, one for the preposition <span style="font-style: italic">de</span> and another one for the
-article <span style="font-style: italic">el</span>). Lexical units made of more than one word (multiwords)
-are treated as single lexical forms and processed specifically according to
-its type.<span class="Footnote"><span class="FootnoteRef"><span style="vertical-align: super; font-size: 80%"><a href="#%28counter-%28%29._%28gentag._4._%28lib._apertium-platform-doc%2Findex..scrbl%29%29%29" data-pltdoc="x">2</a></span></span><span class="FootnoteContent">For more information about the treatment of multiwords,
-please refer to page ~\pageref{ss:multipalabras}.</span></span></p></li></ul><p>Upon receiving as input the example text from the previous module, the
-morphological analyser would deliver:
-\begin{alltt}
-^es/ser&lt;vbser&gt;&lt;pri&gt;&lt;p3&gt;&lt;sg&gt;\$[ &lt;em&gt;]
-^una/un&lt;det&gt;&lt;ind&gt;&lt;f&gt;&lt;sg&gt;/unir&lt;vblex&gt;&lt;prs&gt;&lt;1&gt;&lt;sg&gt;/unir
-&lt;vblex&gt;&lt;prs&gt;&lt;3&gt;&lt;sg&gt;\$
-^se&#241;al/se&#241;al&lt;n&gt;&lt;f&gt;&lt;sg&gt;\$[&lt;/em&gt;]
-\end{alltt}</p><p>where each surface form has been analysed into one or more lexical
-forms: \emph{es} has been analysed as one SF with lemma \emph{ser}
-("to be"), whereas \emph{una} receives three analyses: lemma \emph{un}
-("one"), determiner, indefinite, feminine, singular; lemma \emph{unir}
-("to join"), verb in subjunctive present, 1st person singular, and
-lemma \emph{unir}, verb in subjunctive present, 3rd person singular.</p><p>This module is generated from a source language (SL) morphological
-dictionary, the format of which is specified in section
-\ref{ss:diccionarios}.
-\item The \emph{part-of-speech tagger} chooses, using a statistical
-model (hidden Markov model), one of the analyses of an ambiguous word
-according to its context; in the previous example, the ambiguous word
-would be the surface form \emph{una}, which can have three different
-analyses. A sizeable fraction of surface forms (in Romance languages,
-for instance, around one out of every three words) are ambiguous, that
-is, they can be analysed into more than one lemma, more than one
-part-of-speech or have more than one inflection analysis, and are
-therefore an important source of translation errors when the wrong
-equivalent is chosen. The statistical model is trained on
-representative source-language text corpora.</p><p>The result of processing the example text delivered by the
-  morphological analyser with the part-of-speech tagger would be:</p><p>\begin{alltt}
-^ser&lt;vbser&gt;&lt;pri&gt;&lt;p3&gt;&lt;sg&gt;\$[ &lt;em&gt;]^un&lt;det&gt;&lt;ind&gt;&lt;f&gt;&lt;sg&gt;\$
-^se&#241;al&lt;n&gt;&lt;f&gt;&lt;sg&gt;\$[&lt;/em&gt;]
-\end{alltt}</p><p>where the correct lexical form (determiner) has been selected for the
-word \emph{una}.</p><p>The specification of the part-of-speech tagger is in section
-  \ref{ss:tagger}.</p><p>\item The \emph{lexical transfer module}, that uses a bilingual
+preposition-article contraction <span style="font-style: italic">del</span> would be analysed into two lexical
+forms, one for the preposition <span style="font-style: italic">de</span> and another one for the article
+<span style="font-style: italic">el</span>). Lexical units made of more than one word (multiwords) are treated
+as single lexical forms and processed specifically according to its
+type.<span class="Footnote"><span class="FootnoteRef"><span style="vertical-align: super; font-size: 80%"><a href="#%28counter-%28%29._%28gentag._4._%28lib._apertium-platform-doc%2Findex..scrbl%29%29%29" data-pltdoc="x">2</a></span></span><span class="FootnoteContent">For more information about the treatment of multiwords, please
+refer to page ~\pageref{ss:multipalabras}.</span></span></p><p>Upon receiving as input the example text from the previous module, the
+morphological analyser would deliver:</p><p><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="stt">^es/ser&lt;vbser&gt;&lt;pri&gt;&lt;p3&gt;&lt;sg&gt;$[ &lt;em&gt;]</span></p></td></tr><tr><td><p><span class="stt">^una/un&lt;det&gt;&lt;ind&gt;&lt;f&gt;&lt;sg&gt;/unir&lt;vblex&gt;&lt;prs&gt;&lt;1&gt;&lt;sg&gt;/unir&lt;vblex&gt;&lt;prs&gt;&lt;3&gt;&lt;sg&gt;$</span></p></td></tr><tr><td><p><span class="stt">^se&#241;al/se&#241;al&lt;n&gt;&lt;f&gt;&lt;sg&gt;$[&lt;/em&gt;]</span></p></td></tr></table></p><p>where each surface form has been analysed into one or more lexical forms:
+<span style="font-style: italic">es</span> has been analysed as one SF with lemma <span style="font-style: italic">ser</span> (&ldquo;to be&rdquo;),
+whereas <span style="font-style: italic">una</span> receives three analyses: lemma <span style="font-style: italic">un</span> (&ldquo;one&rdquo;),
+determiner, indefinite, feminine, singular; lemma <span style="font-style: italic">unir</span> (&ldquo;to join&rdquo;),
+verb in subjunctive present, 1st person singular, and lemma <span style="font-style: italic">unir</span>, verb
+in subjunctive present, 3rd person singular.</p><p>This module is generated from a source language (SL) morphological dictionary,
+the format of which is specified in Section 4.1.2. </p></li><li><p>The <span style="font-style: italic">part-of-speech tagger</span> chooses, using a statistical model
+(hidden Markov model), one of the analyses of an ambiguous word according to
+its context; in the previous example, the ambiguous word would be the surface
+form <span style="font-style: italic">una</span>, which can have three different analyses. A sizeable fraction
+of surface forms (in Romance languages, for instance, around one out of every
+three words) are ambiguous, that is, they can be analysed into more than one
+lemma, more than one part-of-speech or have more than one inflection analysis,
+and are therefore an important source of translation errors when the wrong
+equivalent is chosen. The statistical model is trained on representative
+source-language text corpora.</p><p>The result of processing the example text delivered by the morphological
+analyser with the part-of-speech tagger would be:</p><p><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="stt">^ser&lt;vbser&gt;&lt;pri&gt;&lt;p3&gt;&lt;sg&gt;$[ &lt;em&gt;]^un&lt;det&gt;&lt;ind&gt;&lt;f&gt;&lt;sg&gt;$</span></p></td></tr><tr><td><p><span class="stt">^se&#241;al&lt;n&gt;&lt;f&gt;&lt;sg&gt;$[&lt;/em&gt;]</span></p></td></tr></table></p><p>where the correct lexical form (determiner) has been selected for the word
+<span style="font-style: italic">una</span>.</p><p>The specification of the part-of-speech tagger is in Section 4.2. </p></li></ul><p>\item The \emph{lexical transfer module}, that uses a bilingual
 dictionary and is called by the structural transfer module, reads each
 LF of the SL and delivers the corresponding target language (TL)
 lexical form. The dictionary contains a single equivalent for each SL
@@ -165,7 +151,7 @@ transfer module, morphological generator and post-generator) use a
 single compiler, based on a class of \emph{finite-state transducers}
 \cite{garrido99j}, in particular, letter transducers
 \cite{roche97,ortiz05j}; its characteristics are described in Section
-\ref{se:compiladoresdic}.</p><a name="(part._(gentag._2._(lib._apertium-platform-doc/index..scrbl)))"></a><p class="FootnoteBlock"><div class="SIntrapara"><p class="FootnoteBlockContent"><span class="FootnoteTarget"><span style="vertical-align: super; font-size: 80%"><a name="(counter-()._(gentag._3._(lib._apertium-platform-doc/index..scrbl)))"></a>1</span></span><a href="http://www.w3.org/XML/"><span class="url">http://www.w3.org/XML/</span></a></p></div><div class="SIntrapara"><p class="FootnoteBlockContent"><span class="FootnoteTarget"><span style="vertical-align: super; font-size: 80%"><a name="(counter-()._(gentag._4._(lib._apertium-platform-doc/index..scrbl)))"></a>2</span></span>For more information about the treatment of multiwords,
-please refer to page ~\pageref{ss:multipalabras}.</p></div></p><div class="navsetbottom"><span class="navleft"><form class="searchform"><input class="searchbox" style="color: #888;" type="text" tabindex="1" value="...search manuals..." title="Enter a search string to search the manuals" onkeypress="return DoSearchKey(event, this, &quot;7.7&quot;, &quot;../&quot;);" onfocus="this.style.color=&quot;black&quot;; this.style.textAlign=&quot;left&quot;; if (this.value == &quot;...search manuals...&quot;) this.value=&quot;&quot;;" onblur="if (this.value.match(/^ *$/)) { this.style.color=&quot;#888&quot;; this.style.textAlign=&quot;center&quot;; this.value=&quot;...search manuals...&quot;; }"/></form>&nbsp;&nbsp;<a href="../index.html" title="up to the documentation top" data-pltdoc="x" onclick="return GotoPLTRoot(&quot;7.7&quot;);">top</a></span><span class="navright">&nbsp;&nbsp;<a href="intro.html" title="backward to &quot;1 Introduction&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Documentation of the Open-Source Shallow-Transfer
+\ref{se:compiladoresdic}.</p><a name="(part._(gentag._2._(lib._apertium-platform-doc/index..scrbl)))"></a><p class="FootnoteBlock"><div class="SIntrapara"><p class="FootnoteBlockContent"><span class="FootnoteTarget"><span style="vertical-align: super; font-size: 80%"><a name="(counter-()._(gentag._3._(lib._apertium-platform-doc/index..scrbl)))"></a>1</span></span><a href="http://www.w3.org/XML/"><span class="url">http://www.w3.org/XML/</span></a></p></div><div class="SIntrapara"><p class="FootnoteBlockContent"><span class="FootnoteTarget"><span style="vertical-align: super; font-size: 80%"><a name="(counter-()._(gentag._4._(lib._apertium-platform-doc/index..scrbl)))"></a>2</span></span>For more information about the treatment of multiwords, please
+refer to page ~\pageref{ss:multipalabras}.</p></div></p><div class="navsetbottom"><span class="navleft"><form class="searchform"><input class="searchbox" style="color: #888;" type="text" tabindex="1" value="...search manuals..." title="Enter a search string to search the manuals" onkeypress="return DoSearchKey(event, this, &quot;7.7&quot;, &quot;../&quot;);" onfocus="this.style.color=&quot;black&quot;; this.style.textAlign=&quot;left&quot;; if (this.value == &quot;...search manuals...&quot;) this.value=&quot;&quot;;" onblur="if (this.value.match(/^ *$/)) { this.style.color=&quot;#888&quot;; this.style.textAlign=&quot;center&quot;; this.value=&quot;...search manuals...&quot;; }"/></form>&nbsp;&nbsp;<a href="../index.html" title="up to the documentation top" data-pltdoc="x" onclick="return GotoPLTRoot(&quot;7.7&quot;);">top</a></span><span class="navright">&nbsp;&nbsp;<a href="intro.html" title="backward to &quot;1 Introduction&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Documentation of the Open-Source Shallow-Transfer
 Machine-Translation Platform Apertium&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="stream-format.html" title="forward to &quot;3 Format
 specification of the data stream between modules&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>

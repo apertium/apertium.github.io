@@ -94,77 +94,76 @@ es [<em>]una señal[</em>]
 The character sequences in brackets are treated by the rest of the modules as
 simple blanks between words.}
 
-@item{The @a-module{morphological analyser}, which tokenizes the text in
-  @italic{surface forms} (SF) (lexical units as they appear in texts) and
-  delivers, for each SF, one or more @italic{lexical forms} (LF) consisting of
-  @italic{lemma} (the base form commonly used in classic dictionary entries),
-  the @italic{lexical category} (noun, verb, preposition, etc.) and
-  morphological inflection information (number, gender, person, tense,
-  etc.). Tokenization of a text in SFs is not straightforward due to the
-  existence, on the one hand, of contractions (in Spanish, @italic{del},
-  @italic{teniéndolo}, @italic{vámonos}; in English, @italic{didn't},
-  @italic{can't}) and, on the other hand, of lexical units made of more than
-  one word (in Spanish, @italic{a pesar de}, @italic{echó de menos}; in
-  English, @italic{in front of}, @italic{taken into account}). The
-  morphological analyser is able to analyse these complex SFs and treat them
-  appropriately so that they can be processed by the next modules. In the case
-  of contractions, the system reads a single surface form and gives as output a
-  sequence of two or more lexical forms (for instance, the Spanish
-  preposition-article contraction @italic{del} would be analysed into two
-  lexical forms, one for the preposition @italic{de} and another one for the
-  article @italic{el}). Lexical units made of more than one word (multiwords)
-  are treated as single lexical forms and processed specifically according to
-  its type.@footnote{For more information about the treatment of multiwords,
-  please refer to page ~\pageref{ss:multipalabras}.}}
+@item{
 
-]
+The @a-module{morphological analyser}, which tokenizes the text in
+@italic{surface forms} (SF) (lexical units as they appear in texts) and
+delivers, for each SF, one or more @italic{lexical forms} (LF) consisting of
+@italic{lemma} (the base form commonly used in classic dictionary entries), the
+@italic{lexical category} (noun, verb, preposition, etc.) and morphological
+inflection information (number, gender, person, tense, etc.). Tokenization of a
+text in SFs is not straightforward due to the existence, on the one hand, of
+contractions (in Spanish, @italic{del}, @italic{teniéndolo}, @italic{vámonos};
+in English, @italic{didn't}, @italic{can't}) and, on the other hand, of lexical
+units made of more than one word (in Spanish, @italic{a pesar de}, @italic{echó
+de menos}; in English, @italic{in front of}, @italic{taken into account}). The
+morphological analyser is able to analyse these complex SFs and treat them
+appropriately so that they can be processed by the next modules. In the case of
+contractions, the system reads a single surface form and gives as output a
+sequence of two or more lexical forms (for instance, the Spanish
+preposition-article contraction @italic{del} would be analysed into two lexical
+forms, one for the preposition @italic{de} and another one for the article
+@italic{el}). Lexical units made of more than one word (multiwords) are treated
+as single lexical forms and processed specifically according to its
+type.@footnote{For more information about the treatment of multiwords, please
+refer to page ~\pageref{ss:multipalabras}.}
 
 Upon receiving as input the example text from the previous module, the
 morphological analyser would deliver:
-\begin{alltt} 
-^es/ser<vbser><pri><p3><sg>\$[ <em>]
-^una/un<det><ind><f><sg>/unir<vblex><prs><1><sg>/unir
-<vblex><prs><3><sg>\$ 
-^señal/señal<n><f><sg>\$[</em>]
-\end{alltt}
 
-where each surface form has been analysed into one or more lexical
-forms: \emph{es} has been analysed as one SF with lemma \emph{ser}
-("to be"), whereas \emph{una} receives three analyses: lemma \emph{un}
-("one"), determiner, indefinite, feminine, singular; lemma \emph{unir}
-("to join"), verb in subjunctive present, 1st person singular, and
-lemma \emph{unir}, verb in subjunctive present, 3rd person singular.
+@verbatim{
+^es/ser<vbser><pri><p3><sg>$[ <em>]
+^una/un<det><ind><f><sg>/unir<vblex><prs><1><sg>/unir<vblex><prs><3><sg>$
+^señal/señal<n><f><sg>$[</em>]
+}
 
-This module is generated from a source language (SL) morphological
-dictionary, the format of which is specified in section
-\ref{ss:diccionarios}.
-\item The \emph{part-of-speech tagger} chooses, using a statistical
-model (hidden Markov model), one of the analyses of an ambiguous word
-according to its context; in the previous example, the ambiguous word
-would be the surface form \emph{una}, which can have three different
-analyses. A sizeable fraction of surface forms (in Romance languages,
-for instance, around one out of every three words) are ambiguous, that
-is, they can be analysed into more than one lemma, more than one
-part-of-speech or have more than one inflection analysis, and are
-therefore an important source of translation errors when the wrong
-equivalent is chosen. The statistical model is trained on
-representative source-language text corpora.
+where each surface form has been analysed into one or more lexical forms:
+@italic{es} has been analysed as one SF with lemma @italic{ser} (``to be''),
+whereas @italic{una} receives three analyses: lemma @italic{un} (``one''),
+determiner, indefinite, feminine, singular; lemma @italic{unir} (``to join''),
+verb in subjunctive present, 1st person singular, and lemma @italic{unir}, verb
+in subjunctive present, 3rd person singular.
+
+This module is generated from a source language (SL) morphological dictionary,
+the format of which is specified in Section 4.1.2. @; TODO secref
+}
+
+@item{The @a-module{part-of-speech tagger} chooses, using a statistical model
+(hidden Markov model), one of the analyses of an ambiguous word according to
+its context; in the previous example, the ambiguous word would be the surface
+form @italic{una}, which can have three different analyses. A sizeable fraction
+of surface forms (in Romance languages, for instance, around one out of every
+three words) are ambiguous, that is, they can be analysed into more than one
+lemma, more than one part-of-speech or have more than one inflection analysis,
+and are therefore an important source of translation errors when the wrong
+equivalent is chosen. The statistical model is trained on representative
+source-language text corpora.
  
-  The result of processing the example text delivered by the
-  morphological analyser with the part-of-speech tagger would be:
+The result of processing the example text delivered by the morphological
+analyser with the part-of-speech tagger would be:
 
-\begin{alltt}
-^ser<vbser><pri><p3><sg>\$[ <em>]^un<det><ind><f><sg>\$ 
-^señal<n><f><sg>\$[</em>]
-\end{alltt}
+@verbatim{
+^ser<vbser><pri><p3><sg>$[ <em>]^un<det><ind><f><sg>$
+^señal<n><f><sg>$[</em>]
+}
 
-where the correct lexical form (determiner) has been selected for the
-word \emph{una}.
+where the correct lexical form (determiner) has been selected for the word
+@italic{una}.
 
 
-  The specification of the part-of-speech tagger is in section
-  \ref{ss:tagger}.
-
+The specification of the part-of-speech tagger is in Section 4.2. @; TODO
+								  @; secref
+}]
 
 \item The \emph{lexical transfer module}, that uses a bilingual
 dictionary and is called by the structural transfer module, reads each
