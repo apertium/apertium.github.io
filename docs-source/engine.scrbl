@@ -161,48 +161,49 @@ where the correct lexical form (determiner) has been selected for the word
 @italic{una}.
 
 
-The specification of the part-of-speech tagger is in Section 4.2. @; TODO
-								  @; secref
-}]
+The specification of the part-of-speech tagger is in Section 4.2.} @; TODO
+								   @; secref
 
-\item The \emph{lexical transfer module}, that uses a bilingual
-dictionary and is called by the structural transfer module, reads each
-LF of the SL and delivers the corresponding target language (TL)
-lexical form. The dictionary contains a single equivalent for each SL
-lexical form; that is, no word-sense disambiguation is performed
-\nota{now not true: lextor}. Multiwords are translated as a single unit.
-The lexical forms in the running example would be translated into
-Catalan as follows:
 
-\begin{alltt}
-ser<vbser> \(\longrightarrow\) ser<vbser>
-un<det> \(\longrightarrow\) un<det>
-señal<n><f> \(\longrightarrow\) senyal<n><m>
-\end{alltt}
+@item{The @a-module{lexical transfer module}, that uses a bilingual dictionary
+and is called by the structural transfer module, reads each LF of the SL and
+delivers the corresponding target language (TL) lexical form. @sout{The
+dictionary contains a single equivalent for each SL lexical form; that is, no
+word-sense disambiguation is performed.} @red{The dictionary can contain
+multiple translations for each SL lexical form. The next module in the pipeline
+@a-module{lexical selector} -- will pick the translation equivalent that is
+most appropriate.}  Multiwords are translated as a single unit. The lexical
+forms in the running example would be translated into Catalan as follows:
 
-This module is generated from a bilingual dictionary, which is
-described in Section \ref{ss:diccionarios}.
+@verbatim{
+^ser<vbser>/ser<vbser>$
+^un<det>/un<det>$
+^señal<n><f>/senyal<n><m>$
+}
 
-\item The \emph{structural transfer module}, which detects and
-processes patterns of words (chunks or phrases) that need special
-processing due to grammatical divergences between the two languages
-(gender and number changes, word reorderings, changes in prepositions,
-etc.). This module is generated from a file containing rules which
-describe the action to be taken for each pattern.  In the running
-example, the pattern formed by
-\verb!^!\texttt{un<det><ind><f><sg>}\verb!$!
-\verb!^!\texttt{señal<n><f><sg>}\verb!$! would be detected by a
-determiner--noun rule, which in this case would change the gender of
-the determiner so that it agrees with the noun; the result would be:
+This module is generated from a bilingual dictionary, which is described in
+Section 4.1.2.} @; TODO secref
 
-\begin{alltt}
-^ser<vbser><pri><p3><sg>\$[ <em>]^un<det><ind><m><sg>\$
-^senyal<n><m><sg>\$[</em>]
-\end{alltt}
+@item{The @a-module{structural transfer module}, which detects and processes
+patterns of words (chunks or phrases) that need special processing due to
+grammatical divergences between the two languages (gender and number changes,
+word reorderings, changes in prepositions, etc.). This module is generated from
+a file containing rules which describe the action to be taken for each pattern.
+In the running example, the pattern formed by @tt{^un<det><ind><f><sg>$
+^señal<n><f><sg>$} would be detected by a determiner--noun rule, which in this
+case would change the gender of the determiner so that it agrees with the noun;
+the result would be:
 
- The format of the structural transfer rules file, inspired in the one
- described in \cite{garridoalenda01p}, is specified in Section
- \ref{ss:transfer}.
+@verbatim{
+^ser<vbser><pri><p3><sg>$[ <em>]^un<det><ind><m><sg>$
+^senyal<n><m><sg>$[</em>]
+}
+
+The format of the structural transfer rules file, inspired in the one described
+ in @~cite[garridoalenda01p], is specified in Section 4.5.} @; TODO secref
+
+]
+
 \item The \emph{morphological generator}, that, from a lexical form in
 the target language, generates a suitably inflected surface form. The
 result for the example phrase would be:

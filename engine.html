@@ -98,35 +98,25 @@ and are therefore an important source of translation errors when the wrong
 equivalent is chosen. The statistical model is trained on representative
 source-language text corpora.</p><p>The result of processing the example text delivered by the morphological
 analyser with the part-of-speech tagger would be:</p><p><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="stt">^ser&lt;vbser&gt;&lt;pri&gt;&lt;p3&gt;&lt;sg&gt;$[ &lt;em&gt;]^un&lt;det&gt;&lt;ind&gt;&lt;f&gt;&lt;sg&gt;$</span></p></td></tr><tr><td><p><span class="stt">^se&#241;al&lt;n&gt;&lt;f&gt;&lt;sg&gt;$[&lt;/em&gt;]</span></p></td></tr></table></p><p>where the correct lexical form (determiner) has been selected for the word
-<span style="font-style: italic">una</span>.</p><p>The specification of the part-of-speech tagger is in Section 4.2. </p></li></ul><p>\item The \emph{lexical transfer module}, that uses a bilingual
-dictionary and is called by the structural transfer module, reads each
-LF of the SL and delivers the corresponding target language (TL)
-lexical form. The dictionary contains a single equivalent for each SL
-lexical form; that is, no word-sense disambiguation is performed
-\nota{now not true: lextor}. Multiwords are translated as a single unit.
-The lexical forms in the running example would be translated into
-Catalan as follows:</p><p>\begin{alltt}
-ser&lt;vbser&gt; \(\longrightarrow\) ser&lt;vbser&gt;
-un&lt;det&gt; \(\longrightarrow\) un&lt;det&gt;
-se&#241;al&lt;n&gt;&lt;f&gt; \(\longrightarrow\) senyal&lt;n&gt;&lt;m&gt;
-\end{alltt}</p><p>This module is generated from a bilingual dictionary, which is
-described in Section \ref{ss:diccionarios}.</p><p>\item The \emph{structural transfer module}, which detects and
-processes patterns of words (chunks or phrases) that need special
-processing due to grammatical divergences between the two languages
-(gender and number changes, word reorderings, changes in prepositions,
-etc.). This module is generated from a file containing rules which
-describe the action to be taken for each pattern.  In the running
-example, the pattern formed by
-\verb!^!\texttt{un&lt;det&gt;&lt;ind&gt;&lt;f&gt;&lt;sg&gt;}\verb!$!
-\verb!^!\texttt{se&#241;al&lt;n&gt;&lt;f&gt;&lt;sg&gt;}\verb!$! would be detected by a
-determiner&ndash;noun rule, which in this case would change the gender of
-the determiner so that it agrees with the noun; the result would be:</p><p>\begin{alltt}
-^ser&lt;vbser&gt;&lt;pri&gt;&lt;p3&gt;&lt;sg&gt;\$[ &lt;em&gt;]^un&lt;det&gt;&lt;ind&gt;&lt;m&gt;&lt;sg&gt;\$
-^senyal&lt;n&gt;&lt;m&gt;&lt;sg&gt;\$[&lt;/em&gt;]
-\end{alltt}</p><p>The format of the structural transfer rules file, inspired in the one
- described in \cite{garridoalenda01p}, is specified in Section
- \ref{ss:transfer}.
-\item The \emph{morphological generator}, that, from a lexical form in
+<span style="font-style: italic">una</span>.</p><p>The specification of the part-of-speech tagger is in Section 4.2.</p></li><li><p>The <span style="font-style: italic">lexical transfer module</span>, that uses a bilingual dictionary
+and is called by the structural transfer module, reads each LF of the SL and
+delivers the corresponding target language (TL) lexical form. <span class="strikethrough">The
+dictionary contains a single equivalent for each SL lexical form; that is, no
+word-sense disambiguation is performed.</span> <span style="color: red">The dictionary can contain
+multiple translations for each SL lexical form. The next module in the pipeline
+<span style="font-style: italic">lexical selector</span> &ndash; will pick the translation equivalent that is
+most appropriate.</span>  Multiwords are translated as a single unit. The lexical
+forms in the running example would be translated into Catalan as follows:</p><p><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="stt">^ser&lt;vbser&gt;/ser&lt;vbser&gt;$</span></p></td></tr><tr><td><p><span class="stt">^un&lt;det&gt;/un&lt;det&gt;$</span></p></td></tr><tr><td><p><span class="stt">^se&#241;al&lt;n&gt;&lt;f&gt;/senyal&lt;n&gt;&lt;m&gt;$</span></p></td></tr></table></p><p>This module is generated from a bilingual dictionary, which is described in
+Section 4.1.2.</p></li><li><p>The <span style="font-style: italic">structural transfer module</span>, which detects and processes
+patterns of words (chunks or phrases) that need special processing due to
+grammatical divergences between the two languages (gender and number changes,
+word reorderings, changes in prepositions, etc.). This module is generated from
+a file containing rules which describe the action to be taken for each pattern.
+In the running example, the pattern formed by <span class="stt">^un&lt;det&gt;&lt;ind&gt;&lt;f&gt;&lt;sg&gt;$
+^se&#241;al&lt;n&gt;&lt;f&gt;&lt;sg&gt;$</span> would be detected by a determiner&ndash;noun rule, which in this
+case would change the gender of the determiner so that it agrees with the noun;
+the result would be:</p><p><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="stt">^ser&lt;vbser&gt;&lt;pri&gt;&lt;p3&gt;&lt;sg&gt;$[ &lt;em&gt;]^un&lt;det&gt;&lt;ind&gt;&lt;m&gt;&lt;sg&gt;$</span></p></td></tr><tr><td><p><span class="stt">^senyal&lt;n&gt;&lt;m&gt;&lt;sg&gt;$[&lt;/em&gt;]</span></p></td></tr></table></p><p>The format of the structural transfer rules file, inspired in the one described
+ in <span class="Autobibref">&nbsp;[<a href="doc-bibliography.html#%28autobib._.Alicia._.Garrido-.Alenda._and._.Mikel._.L..._.Forcada.Morph.Trans~3a._un._lenguaje._y._un._compilador._para._especificar._y~0a._._._._._._._generar._m~c3~b3dulos._de._transferencia._morfol~c3~b3gica._para._sistemas~0a._._._._._._._de._traducci~c3~b3n._autom~c3~a1tica.Procesamiento._del._.Lenguaje._.Natural._27%2C._pp..._157--1642001%29" class="AutobibLink" data-pltdoc="x">3</a>]</span>, is specified in Section 4.5.</p></li></ul><p>\item The \emph{morphological generator}, that, from a lexical form in
 the target language, generates a suitably inflected surface form. The
 result for the example phrase would be:
 \begin{alltt}
