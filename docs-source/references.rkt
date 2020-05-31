@@ -110,3 +110,15 @@
                                        Toolsets and Architectures to Build NLP Systems,
                                        Luxembourg")
 	    #:date 2000))
+
+(define roche97
+  (make-bib #:title "FIXME"
+	    #:author (authors (author-name "FIXME" "FIXME"))
+	    #:location (proceedings-location "FIXME")
+	    #:date 0000))
+
+(define ortiz05j
+  (make-bib #:title "FIXME"
+	    #:author (authors (author-name "FIXME" "FIXME"))
+	    #:location (proceedings-location "FIXME")
+	    #:date 0000))

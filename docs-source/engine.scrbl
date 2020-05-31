@@ -202,40 +202,33 @@ the result would be:
 The format of the structural transfer rules file, inspired in the one described
  in @~cite[garridoalenda01p], is specified in Section 4.5.} @; TODO secref
 
-]
+@item{The @a-module{morphological generator}, that, from a lexical form in the
+target language, generates a suitably inflected surface form. The result for
+the example phrase would be:
 
-\item The \emph{morphological generator}, that, from a lexical form in
-the target language, generates a suitably inflected surface form. The
-result for the example phrase would be:
-\begin{alltt} 
-és[ <em>]un senyal[</em>]
-\end{alltt}
+@verbatim{és[ <em>]un senyal[</em>]}
 
-This module is generated from a morphological dictionary, which is
-described in detail in Section \ref{ss:diccionarios}.
-\item The \emph{post-generator}, that performs some orthographic
-operations in the TL such as contractions and apostrophations, and
-which is generated from a transformation rules file the format of
-which is very similar to the format of the mentioned dictionaries. Its
-format is specified in Section \ref{ss:diccionarios}. In the example
-text there is no need to perform any contraction or apostrophation.
-\item The \emph{re-formatter}, which restores the original format
-information into the translated text; the result for the running
-example would be the correct conversion of the text into HTML format:
-\begin{alltt} 
-és <em>un senyal</em>
-\end{alltt}
+This module is generated from a morphological dictionary, which is described in
+detail in Section 4.1.2.} @; TODO secref
 
+@item{The @a-module{post-generator}, that performs some orthographic operations
+in the TL such as contractions and apostrophations, and which is generated from
+a transformation rules file the format of which is very similar to the format
+of the mentioned dictionaries. Its format is specified in Section 4.1.2. In the
+example text there is no need to perform any contraction or apostrophation.}
 
-The specification of the re-formatter is described in Section
-\ref{ss:formato}.
-\end{itemize}
+@item{The @a-module{re-formatter}, which restores the original format
+information into the translated text; the result for the running example would
+be the correct conversion of the text into HTML format:
 
-The four lexical processing modules (morphological analyser, lexical
-transfer module, morphological generator and post-generator) use a
-single compiler, based on a class of \emph{finite-state transducers}
-\cite{garrido99j}, in particular, letter transducers
-\cite{roche97,ortiz05j}; its characteristics are described in Section
-\ref{se:compiladoresdic}.
+@verbatim{és <em>un senyal</em>}
+
+The specification of the re-formatter is described in Section 4.6.1.}]
+
+The four lexical processing modules (morphological analyser, lexical transfer
+module, morphological generator and post-generator) use a single compiler,
+based on a class of @italic{finite-state transducers} @~cite[garrido99j], in
+particular, letter transducers @~cite[roche97], @~cite[ortiz05j]; its
+characteristics are described in Section 4.1.3.
 
 @make-footnote[]
