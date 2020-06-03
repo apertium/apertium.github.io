@@ -4,7 +4,7 @@
 
 @title[#:tag "modules" #:version "3.5.2"]{Modules specification}
 
-\section{Lexical processing modules}
+@section{Lexical processing modules}
 \label{ss:modproclex}
 
 \subsection{Module description }
@@ -5078,8 +5078,7 @@ transfer modules are executed together.
 \label{se:desformat}
 
 
-\subsection{Format processing}
-\label{ss:formato}
+@subsection[#:tag "formats"]{Format processing}
 
 This section describes how the de-formatter and re-formatter process
 the format of the documents. These two modules are created from a set
@@ -5120,7 +5119,7 @@ consecutive line breaks in plain text format, a \texttt{</h1>} tag in
 HTML, etc. The de-formatter generates in such cases a mark of sentence
 end that is equivalent to a full stop.
 
-\subsubsection{Format encapsulation method}
+@subsubsection{Format encapsulation method}
 
 The types of blocks of format or \emph{superblanks} that can be
 generated as a result of the format processing are the following:

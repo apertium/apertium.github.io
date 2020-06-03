@@ -44,7 +44,7 @@
            transform="matrix(1,0,0,-1,85.25,80.7898)"><tspan
              id="tspan28"
              y="0"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002">Morphological</tspan><tspan
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002">Morph.</tspan><tspan
              id="tspan30"
              y="7.875"
              x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25">analyser</tspan></text>
@@ -59,7 +59,7 @@
            transform="matrix(1,0,0,-1,164,76.2898)"><tspan
              id="tspan38"
              y="0"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25">Etiquetador</tspan></text>
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25">Disambig.</tspan></text>
 </g><path
          id="path42"
          style="fill:none;stroke:#000000;stroke-width:5.625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -71,10 +71,10 @@
            transform="matrix(1,0,0,-1,242.75,80.7898)"><tspan
              id="tspan46"
              y="0"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999">Transfer.</tspan><tspan
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999">Structural</tspan><tspan
              id="tspan48"
              y="7.875"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25">estructural</tspan></text>
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25">transfer</tspan></text>
 </g><path
          id="path52"
          style="fill:none;stroke:#000000;stroke-width:5.625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -86,7 +86,7 @@
            transform="matrix(1,0,0,-1,326,76.2898)"><tspan
              id="tspan56"
              y="0"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999">Generador</tspan></text>
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999">Generator</tspan></text>
 </g><path
          id="path60"
          style="fill:none;stroke:#000000;stroke-width:5.625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -101,7 +101,7 @@
              x="0 4.7249999 9.4499998 14.175 18.9">Post-</tspan><tspan
              id="tspan66"
              y="7.875"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999">generador</tspan></text>
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999">generator</tspan></text>
 </g><path
          id="path70"
          style="fill:none;stroke:#000000;stroke-width:5.625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -113,10 +113,10 @@
            transform="matrix(1,0,0,-1,247.25,22.2898)"><tspan
              id="tspan74"
              y="0"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999">Transfer.</tspan><tspan
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999">Lexical</tspan><tspan
              id="tspan76"
              y="7.875"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625">léxica</tspan></text>
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625">transfer</tspan></text>
 </g><path
          id="path80"
          style="fill:none;stroke:#000000;stroke-width:5.625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
@@ -215,10 +215,10 @@
            transform="matrix(1,0,0,-1,488,197.79)"><tspan
              id="tspan142"
              y="0"
-             x="0 4.7249999 9.4499998 14.175 18.9">Texto</tspan><tspan
+             x="0 4.7249999 9.4499998 14.175 18.9">Translated</tspan><tspan
              id="tspan144"
              y="7.875"
-             x="0 4.7249999 9.4499998 14.175">meta</tspan></text>
+             x="0 4.7249999 9.4499998 14.175">text</tspan></text>
 </g><path
          id="path148"
          style="fill:none;stroke:#000000;stroke-width:16.875;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:67.5, 22.5;stroke-dashoffset:0;stroke-opacity:1"
@@ -254,13 +254,13 @@
            transform="matrix(1,0,0,-1,229.25,168.54)"><tspan
              id="tspan168"
              y="0"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25 51.974998 56.700001 61.424999 66.150002 70.875 75.599998 80.324997 85.050003 89.775002 94.5 99.224998 103.95 108.675 113.4">Flujo de texto segmentado</tspan><tspan
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25 51.974998 56.700001 61.424999 66.150002 70.875 75.599998 80.324997 85.050003 89.775002 94.5 99.224998 103.95 108.675 113.4">Segmented text stream</tspan><tspan
              id="tspan170"
              y="31.5"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25 51.974998 56.700001 61.424999 66.150002 70.875 75.599998 80.324997 85.050003 89.775002 94.5 99.224998 103.95">Flujo de texto original</tspan><tspan
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25 51.974998 56.700001 61.424999 66.150002 70.875 75.599998 80.324997 85.050003 89.775002 94.5 99.224998 103.95">Original format text stream</tspan><tspan
              id="tspan172"
              y="15.75"
-             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25 51.974998 56.700001 61.424999 66.150002 70.875 75.599998 80.324997 85.050003 89.775002 94.5 99.224998 103.95 108.675 113.4 118.125">Flujo de texto sin formato</tspan></text>
+             x="0 4.7249999 9.4499998 14.175 18.9 23.625 28.35 33.075001 37.799999 42.525002 47.25 51.974998 56.700001 61.424999 66.150002 70.875 75.599998 80.324997 85.050003 89.775002 94.5 99.224998 103.95 108.675 113.4 118.125">Stream of text without format</tspan></text>
 </g><path
          id="path176"
          style="fill:none;stroke:#000000;stroke-width:5.625;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:1;stroke-dasharray:none;stroke-opacity:1"
