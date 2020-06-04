@@ -68,7 +68,7 @@ analyser, the post-generator and the re-formatter.
 
 In the subsection of this section you can find a description of the method to
 delimit @italic{superblanks} and @italic{extensive superblanks}. As an example
-we will use the HTML document in Figure @figure-ref{fg:docorig}.
+we will use the HTML document below:
 
 @verbatim{
 <html>
@@ -82,136 +82,141 @@ we will use the HTML document in Figure @figure-ref{fg:docorig}.
 </html>
 }
 
+The structural elements that @sout{must include} this data stream type
+@red{must include} are the following:
 
-The structural elements that must include this data stream type are
-the following:
+@itemlist[
 
-\begin{itemize}
-\item \textit{Superblanks}.  Blocks that contain segments of format
-information included in the documents, when these are short.
-\item \textit{Extensive superblanks}.  Marks that are used to specify
-external documents that include segments of format information for the
-document being processed, when these segments are long.
-\item \textit{Text}. The document text that can be translated.
-\item \textit{Artificial sentence endings}. \label{finfrase} When the
-format in the document suggests a sentence separation that is not
-signalled by any punctuation mark (for instance, titles with no full
-stop at the end, or the content of cells in a table), the format
-processing must have a mechanism (invisible for the user) that enables
-the marking of these sentence endings.
-\item \textit{Special characters protection (for non-XML stream)}.
-  Characters that must be protected to avoid conflict with the ones
-  used in the data stream format.
-\end{itemize}
+@item{@italic{Superblanks}. Blocks that contain segments of format information
+included in the documents, when these are short.}
 
-% \subsection{XML format}
+@item{@italic{Extensive superblanks}. Marks that are used to specify external
+documents that include segments of format information for the document being
+processed, when these segments are long.}
 
-% En este tipo de flujo se usa el elemento \texttt{<\textbf{b}>} para definir los 
-% superblancos y los superblancos extensos.  Para el caso de los 
-% \textbf{superblancos} la sintaxis es la siguiente:
+@item{@italic{Text}. The document text that can be translated.}
 
-% \begin{small}
-% \begin{alltt} % <\textbf{b}>\textit{contenido del bloque de formato}</\textbf{b}>
-% \end{alltt}
-% \end{small}
+@item{@italic{Artificial sentence endings}. When the format in the document
+suggests a sentence separation that is not signalled by any punctuation mark
+(for instance, titles with no full stop at the end, or the content of cells in
+a table), the format processing must have a mechanism (invisible for the user)
+that enables the marking of these sentence endings.}
 
-% Hay que resaltar que para los formatos basados en SGML, es necesario
-% incluir el formato en bloques \texttt{<![CDATA[\ldots]]>} dentro de
-% las marcas indicadas. \nota{millor dir com són: prendre text de EAMT
-% '05 - Gema} Por su parte, los \textit{superblancos extensos} se deben 
-% expresar, a modo de atributos, de la siguiente manera:
+@item{@italic{Special characters protection (for non-XML stream)}. Characters
+that must be protected to avoid conflict with the ones used in the data stream
+format.}
 
-% \begin{small}
-% \begin{alltt} % <\textbf{b} \textsl{filename}="\textit{nombre de fichero}"/>
-% \end{alltt}
-% \end{small}
+]
 
-% El \emph{texto} estará incluido entre los elementos \textbf{b} que se 
-% acaban de explicar sin ninguna marca de estructura particular.
+@; \subsection{XML format}
 
-% Los \emph{finales de frase artificiales} se expresan mediante un punto y un 
-% superblanco vacío inmediatamente a continuación.
+@; En este tipo de flujo se usa el elemento \texttt{<\textbf{b}>} para definir los 
+@; superblancos y los superblancos extensos.  Para el caso de los 
+@; \textbf{superblancos} la sintaxis es la siguiente:
 
-% \begin{small}
-% \begin{alltt} % .<\textbf{b}/>
-% \end{alltt}
-% \end{small}
+@; \begin{small}
+@; \begin{alltt} % <\textbf{b}>\textit{contenido del bloque de formato}</\textbf{b}>
+@; \end{alltt}
+@; \end{small}
 
-% Resumiendo, el flujo de datos de un documento en cualquier formato de los que 
-% trata el traductor se reduce a otro documento XML que debe cumplir la 
-% siguiente DTD:
+@; Hay que resaltar que para los formatos basados en SGML, es necesario
+@; incluir el formato en bloques \texttt{<![CDATA[\ldots]]>} dentro de
+@; las marcas indicadas. \nota{millor dir com són: prendre text de EAMT
+@; '05 - Gema} Por su parte, los \textit{superblancos extensos} se deben 
+@; expresar, a modo de atributos, de la siguiente manera:
 
-% \begin{small}
-% \begin{alltt} % <!\textsl{ELEMENT} \textbf{document} (b|\textsl{#PCDATA})*> 
-% <!\textsl{ELEMENT} \textbf{b} (\textsl{#PCDATA}?)> 
-% <!\textsl{ATTLIST} b filename \textsl{CDATA} \textsl{#IMPLIED}>
-% \end{alltt}
-% \end{small}
+@; \begin{small}
+@; \begin{alltt} % <\textbf{b} \textsl{filename}="\textit{nombre de fichero}"/>
+@; \end{alltt}
+@; \end{small}
 
-% El resultado de encapsular el formato del fichero de la 
-% figura~\ref{fg:docorig} en el flujo con formato XML se ve en la 
-% figura~\ref{fg:docorigXML}.  Si hubiese algún superblanco que por su longitud
- % se convirtiese en un superblanco extenso, la forma de especificarlo sería como sigue:
-% \begin{small}
-% \begin{alltt} % <\textbf{b} \textsl{filename}="/tmp/ficherotemporal"/>
-% \end{alltt}
-% \end{small}donde \texttt{"/tmp/ficherotemporal"} es un fichero que 
-% contiene el superblanco extenso para que pueda ser recuperado por el reformateador.
+@; El \emph{texto} estará incluido entre los elementos \textbf{b} que se 
+@; acaban de explicar sin ninguna marca de estructura particular.
 
-% \begin{figure}
-% \begin{small}
-% \begin{alltt} % <?\textbf{xml} \textsl{version}="1.0" \textsl{encoding}="iso-8859-15"?> 
-% <\textbf{document}> 
-% <\textbf{b}><![CDATA[<html> % <head>
- % <title>]]></\textbf{b}>Título.<\textbf{b}/><\textbf{b}><![CDATA[</title>
-% </head> % <body> % <p>]]></\textbf{b}>Frase<\textbf{b}><![CDATA[ 
-% ]]></\textbf{b}>dividida.<\textbf{b}/><\textbf{b}><![CDATA[ % </body>
-% </html>]]></\textbf{b}> % </\textbf{document}>
-% \end{alltt}
-% \end{small}
-% \caption{El documento de la figura \protect\ref{fg:docorig} con el
-% formato encapsulado usando marcas en XML y segmentos
-%\texttt{<![CDATA[\ldots]]>}}
-% \label{fg:docorigXML}
-% \end{figure}
+@; Los \emph{finales de frase artificiales} se expresan mediante un punto y un 
+@; superblanco vacío inmediatamente a continuación.
 
-%\subsection{Formato no XML}
-\subsection{Stream format}
-\label{se:noxml1} This format is based on the one used in the machine
-translation systems \textsf{interNOSTRUM}
-\cite{canals01b,garridoalenda01p,garrido99j} and \textsf{Traductor
-Universia} \cite{garrido03p, gilabert03j}.
+@; \begin{small}
+@; \begin{alltt} % .<\textbf{b}/>
+@; \end{alltt}
+@; \end{small}
 
-In this stream type, the characters \texttt{[} and \texttt{]} are used
-to indicate \emph{superblanks}, as shown in the following example:
+@; Resumiendo, el flujo de datos de un documento en cualquier formato de los que 
+@; trata el traductor se reduce a otro documento XML que debe cumplir la 
+@; siguiente DTD:
 
-\begin{small}
-\begin{alltt} 
-[\textit{superblank content}]
-\end{alltt}
-\end{small}
+@; \begin{small}
+@; \begin{alltt} % <!\textsl{ELEMENT} \textbf{document} (b|\textsl{#PCDATA})*> 
+@; <!\textsl{ELEMENT} \textbf{b} (\textsl{#PCDATA}?)> 
+@; <!\textsl{ATTLIST} b filename \textsl{CDATA} \textsl{#IMPLIED}>
+@; \end{alltt}
+@; \end{small}
 
-In the case of \emph{extensive superblanks}, the file name is
-specified using the at sign \texttt{@"@"}:
+@; El resultado de encapsular el formato del fichero de la 
+@; figura~\ref{fg:docorig} en el flujo con formato XML se ve en la 
+@; figura~\ref{fg:docorigXML}.  Si hubiese algún superblanco que por su longitud
+@; se convirtiese en un superblanco extenso, la forma de especificarlo sería como sigue:
+@; \begin{small}
+@; \begin{alltt} % <\textbf{b} \textsl{filename}="/tmp/ficherotemporal"/>
+@; \end{alltt}
+@; \end{small}donde \texttt{"/tmp/ficherotemporal"} es un fichero que 
+@; contiene el superblanco extenso para que pueda ser recuperado por el reformateador.
 
-\begin{small}
-\begin{alltt} 
-[@"@"\textit{file name}]
-\end{alltt}
-\end{small}
+@; \begin{figure}
+@; \begin{small}
+@; \begin{alltt} % <?\textbf{xml} \textsl{version}="1.0" \textsl{encoding}="iso-8859-15"?> 
+@; <\textbf{document}> 
+@; <\textbf{b}><![CDATA[<html> % <head>
+@; <title>]]></\textbf{b}>Título.<\textbf{b}/><\textbf{b}><![CDATA[</title>
+@; </head> % <body> % <p>]]></\textbf{b}>Frase<\textbf{b}><![CDATA[ 
+@; ]]></\textbf{b}>dividida.<\textbf{b}/><\textbf{b}><![CDATA[ % </body>
+@; </html>]]></\textbf{b}> % </\textbf{document}>
+@; \end{alltt}
+@; \end{small}
+@; \caption{El documento de la figura \protect\ref{fg:docorig} con el
+@; formato encapsulado usando marcas en XML y segmentos
+@; \texttt{<![CDATA[\ldots]]>}}
+@; \label{fg:docorigXML}
+@; \end{figure}
 
-The \emph{text} is outside the superblank marks.
+@; \subsection{Formato no XML}
 
-\emph{Artificial sentence endings}
-are expressed by a full stop and an empty superblank right after it.
+@subsection[#:tag "noxml1"]{Stream format}
 
-\begin{small}
-\begin{alltt} 
+This format is based on the one used in the machine translation systems
+@tt{interNOSTRUM} \cite{canals01b,garridoalenda01p,garrido99j} and
+@tt{Traductor Universia} \cite{garrido03p, gilabert03j}.
+
+In this stream type, the characters @tt{[} and @tt{]} are used to indicate
+@italic{superblanks}, as shown in the following example:
+
+@verbatim{
+[superblank content]
+}
+
+In the case of @italic{extensive superblanks}, the file name is specified using
+the at sign @tt{@"@"}:
+
+@verbatim{
+[@"@"file name]
+}
+
+The @italic{text} is outside the superblank marks.
+
+@italic{Artificial sentence endings} are expressed by a full stop and an empty
+superblank right after it.
+
+@verbatim{
 .[]
-\end{alltt}
-\end{small}
+}
 
-The following table shows the \textbf{protected characters}:
+The following table shows the @bold{protected characters}:
+
+@tabular[#:style 'block
+         #:column-properties '(left)
+	 #:row-properties '(border)
+(list (list @bold{Name} @bold{Character} @bold{Protected form} @bold{Meaning})
+      (list "At" @"@" @(string-append "\\" @"@") "External superblank"))]
 
 \begin{center}
 \begin{tabular}{|l|c|c|l|} \hline Name & Character & Protected form&
