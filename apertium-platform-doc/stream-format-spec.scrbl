@@ -68,7 +68,9 @@ analyser, the post-generator and the re-formatter.
 
 In the subsection of this section you can find a description of the method to
 delimit @italic{superblanks} and @italic{extensive superblanks}. As an example
-we will use the HTML document below:
+we will use the HTML document in @Figure-ref{fg:docorigtext}.
+
+@figure["fg:docorig" "Example of HTML document" #:style left-figure-style
 
 @verbatim{
 <html>
@@ -82,6 +84,7 @@ we will use the HTML document below:
 </html>
 }
 
+]
 The structural elements that @sout{must include} this data stream type
 @red{must include} are the following:
 
@@ -216,32 +219,24 @@ The following table shows the @bold{protected characters}:
          #:column-properties '(left)
 	 #:row-properties '(border)
 (list (list @bold{Name} @bold{Character} @bold{Protected form} @bold{Meaning})
-      (list "At" @"@" @(string-append "\\" @"@") "External superblank"))]
+      (list "At" @"@" @(string-append "\\" @"@") "External superblank")
+      (list "Slash" "/" "\\/" "Divider of meaning")
+      (list "Backslash" "\\" "\\\\" "Protection character")
+      (list "Caret" "^" "\\^" "Beginning of LF")
+      (list "Opening square bracket" "[" "\\[" "Beginning of blank")
+      (list "Closing square bracket" "]" "\\]" "End of blank")
+      (list "Dollar" "$" "\\$" "End of LF")
+      (list "Greater than" ">" "\\>" "Begin. of morph. symbol")
+      (list "Less than" "<" "\\<" "End of moprh. symbol")
+)]
 
-\begin{center}
-\begin{tabular}{|l|c|c|l|} \hline Name & Character & Protected form&
-Meaning \\ 
-\hline 
-At & \texttt{@"@"} & \verb!\@"@"! & External superblank\\
-Slash & \texttt{/} & \verb!\/! & Divider of meanings\\ 
-Backslash & \verb!\! & \verb!\\! & Protection character \\ 
-Caret & \verb!^! & \verb!\^! & Beginning of LF\\ 
-Opening square bracket & \texttt{[} & \verb!\[! & Beginning of blank\\ 
-Closing square bracket & \texttt{]} & \verb!\]! & End of blank \\ 
-Dollar & \verb!$! & \verb!\$! & End of LF\\ 
-Greater than & \texttt{>} & \verb!\>! & Begin. of morph. symbol\\
-Less than & \texttt{<} & \verb!\<! & End of morph. symbol \\ 
-\hline
-\end{tabular}
-\end{center}
+@Figure-ref{fg:docorigtext} shows the document in @Figure-ref{fg:docorig} after
+encapsulation.
 
+@figure["fg:docorigtext" (string-append "The document in @Figure-ref fg:docorig
+with format encapsulated using square brackets") #:style left-figure-style
 
-Figure ~\ref{fg:docorigtext} shows the document in Figure
-~\ref{fg:docorig} after encapsulation.
-
-\begin{figure}[here]
-\begin{small}
-\begin{alltt}
+@verbatim{
 [<html> 
   <head> 
     <title>]Title.[][</title> 
@@ -251,15 +246,12 @@ Figure ~\ref{fg:docorigtext} shows the document in Figure
        ]sentence.[][</p>
   </body> 
 <html>]
-\end{alltt}
-\end{small}
-\caption{The document in Figure \protect\ref{fg:docorig} with format
-encapsulated using square brackets}
-\label{fg:docorigtext}
-\end{figure}
+}
+
+]
 
 
-\section{Segmented data stream}
+@section{Segmented data stream}
 
 Segmented data stream is the stream that circulates between the
 modules that handle linguistic information in the translation engine.
