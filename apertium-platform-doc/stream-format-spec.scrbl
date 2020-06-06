@@ -233,8 +233,8 @@ The following table shows the @bold{protected characters}:
 @Figure-ref{fg:docorigtext} shows the document in @Figure-ref{fg:docorig} after
 encapsulation.
 
-@figure["fg:docorigtext" (string-append "The document in @Figure-ref fg:docorig
-with format encapsulated using square brackets") #:style left-figure-style
+@figure["fg:docorigtext" @elem{The document in @Figure-ref{fg:docorig} with
+format encapsulated using square brackets} #:style left-figure-style
 
 @verbatim{
 [<html> 
@@ -250,30 +250,29 @@ with format encapsulated using square brackets") #:style left-figure-style
 
 ]
 
-
 @section{Segmented data stream}
 
-Segmented data stream is the stream that circulates between the
-modules that handle linguistic information in the translation engine.
-In this stream, words are delimited and labelled.  There are two types
-of segmented stream:
+Segmented data stream is the stream that circulates between the modules that
+handle linguistic information in the translation engine. In this stream, words
+are delimited and labelled. There are two types of segmented stream:
 
-\begin{itemize}
-\item \textit{Ambiguous segmented stream}. Its main characteristic is
-that words have a surface form and potentially more than one lexical
-form (lexical multiform).  This stream type is the format in which
-the morphological analyser provides the input data for the
-part-of-speech tagger (see diagram \ref{eq:formaanalizada} in page
-~\pageref{formaanalizada} for a detailed description of ambiguous
-segmented stream).
+@itemlist[
+
+@item{@italic{Ambiguous segmented stream}. Its main characteristic
+is that words have a surface form and potentially more than one lexical form
+(lexical multiform). This stream type is the format in which the morphological
+analyser provides the input data for the part-of-speech tagger (see diagram
+\ref{eq:formaanalizada} in page ~\pageref{formaanalizada} for a detailed
+description of ambiguous segmented stream).}
  
-\item \textit{Unambiguous segmented stream}.  It has only one lexical
-form for each word and it does not include the surface form.  This is
-the format in which data circulate from the part-of-speech tagger to
-the transfer module, and from this module to the generator (see
-diagram \ref{eq:formaanalizada2} in page~\pageref{formaanalizada2} for
-a detailed description of the format of unambiguous segmented stream).
-\end{itemize}
+@item{@italic{Unambiguous segmented stream}. It has only one lexical form for
+each word and it does not include the surface form. This is the format in which
+data circulate from the part-of-speech tagger to the transfer module, and from
+this module to the generator (see diagram \ref{eq:formaanalizada2} in
+page~\pageref{formaanalizada2} for a detailed description of the format of
+unambiguous segmented stream).}
+
+]
 
 Furthermore, besides the information already marked in the data stream
 without format, the new stream has to enable marking of the following
