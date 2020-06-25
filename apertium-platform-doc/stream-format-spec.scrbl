@@ -274,192 +274,188 @@ unambiguous segmented stream).}
 
 ]
 
-Furthermore, besides the information already marked in the data stream
-without format, the new stream has to enable marking of the following
-information:
+Furthermore, besides the information already marked in the data stream without
+format, the new stream has to enable marking of the following information:
 
-\begin{itemize}
-\item \textit{Lexical units}.  A lexical unit is made of a surface
-form (in the case of ambiguous segmented stream) plus one or more
-lexical forms (the different possible analyses of the SF) with their
-grammatical symbols.
-\item \textit{Surface forms (ambiguous segmented stream)}.  The word
-as it appears in the original text.
-\item \textit{Lexical forms}.  The lemma of the word and its
-grammatical symbols.
-\item \textit{Grammatical symbols}.  They describe the morphological
-and grammatical attributes of a surface form.
-\end{itemize}
+@itemlist[
 
-% \subsection{XML format}
+@item{@italic{Lexical units}. A lexical unit is made of a surface form (in the
+case of ambiguous segmented stream) plus one or more lexical forms (the
+different possible analyses of the SF) with their grammatical symbols.}
 
-% Las \textit{palabras} se etiquetan de la forma que se muestra a 
-% continuación:
+@item{@italic{Surface forms (ambiguous segmented stream)}. The word as it
+appears in the original text.}
 
-% \begin{small}
-% \begin{alltt} % <\textbf{w}>\textit{información de la palabra}</\textbf{w}>
-% \end{alltt}
-% \end{small}
+@item{@italic{Lexical forms}. The lemma of the word and its grammatical
+symbols.}
 
-% Para el caso del \textit{flujo de datos segmentado ambiguo}, la 
-% \textit{forma superficial} se indica en el interior de un elemento 
-% \texttt{<\textbf{w}>} mediante el contenido de un único elemento 
-%\texttt{<\textbf{sf}>}.  A continuación, se sitúan la forma o 
-%\textit{formas léxicas} que sean necesarias:
+@item{@italic{Grammatical symbols}. They describe the morphological and
+grammatical attributes of a surface form.}
 
-% \begin{small}
-% \begin{alltt} % <\textbf{w}> % <\textbf{sf}>\textit{forma superficial}</\textbf{sf}> 
-% <\textbf{lf}>\textit{forma léxica 1}</\textbf{lf}> 
-% <\textbf{lf}>\textit{forma léxica 2 (opcional)}</\textbf{lf}> 
-% ...  % </\textbf{w}>
-% \end{alltt}
-% \end{small}
+]
 
-% Para el caso del flujo no ambiguo, sólo se especifica una única forma léxica.
+@; \subsection{XML format}
 
+@; Las \textit{palabras} se etiquetan de la forma que se muestra a 
+@; continuación:
 
-% \begin{small}
-% \begin{alltt} % <\textbf{w}> % <\textbf{lf}>\textit{forma léxica}</\textbf{lf}> % </\textbf{w}>
-% \end{alltt}
-% \end{small}
+@; \begin{small}
+@; \begin{alltt} % <\textbf{w}>\textit{información de la palabra}</\textbf{w}>
+@; \end{alltt}
+@; \end{small}
 
-% %% \pagebreak
+@; Para el caso del \textit{flujo de datos segmentado ambiguo}, la 
+@; \textit{forma superficial} se indica en el interior de un elemento 
+@; \texttt{<\textbf{w}>} mediante el contenido de un único elemento 
+@;\texttt{<\textbf{sf}>}.  A continuación, se sitúan la forma o 
+@;\textit{formas léxicas} que sean necesarias:
 
-% La DTD de este flujo de datos para textos \textit{sin desambiguar} es la % que se muestra en la figura~\ref{fg:ambdtd} a continuación.
+@; \begin{small}
+@; \begin{alltt} % <\textbf{w}> % <\textbf{sf}>\textit{forma superficial}</\textbf{sf}> 
+@; <\textbf{lf}>\textit{forma léxica 1}</\textbf{lf}> 
+@; <\textbf{lf}>\textit{forma léxica 2 (opcional)}</\textbf{lf}> 
+@; ...  % </\textbf{w}>
+@; \end{alltt}
+@; \end{small}
 
-% \begin{figure}[here]
-% \begin{small}
-% \begin{alltt}
-%   <!\textsl{ELEMENT} \textbf{document} (b|w|\textsl{#PCDATA})*>
-%   <!-- atención, el #PCDATA anterior sigue siendo necesario para los 
-%        carácteres no etiquetados y que no forman parte del formato -->
-%   <!\textsl{ELEMENT} \textbf{b} (\textsl{#PCDATA}?)>
-%   <!\textsl{ATTLIST} b filename \textsl{CDATA} \textsl{#IMPLIED}>
-%   <!\textsl{ELEMENT} \textbf{w} (sf,lf+)>
-%   <!\textsl{ELEMENT} \textbf{sf} (\textsl{#PCDATA})>
-%   <!\textsl{ELEMENT} \textbf{lf} (\textsl{#PCDATA}|s)+>
-%   <!\textsl{ELEMENT} \textbf{s} \textsl{EMPTY}>
-%   <!\textsl{ATTLIST} s n \textsl{IDREF #REQUIRED}>
-% \end{alltt}
-% \end{small}
-% \caption{DTD para textos no desambiguados con formato XML}
-% \label{fg:ambdtd}
-% \end{figure}
+@; Para el caso del flujo no ambiguo, sólo se especifica una única forma léxica.
 
 
+@; \begin{small}
+@; \begin{alltt} % <\textbf{w}> % <\textbf{lf}>\textit{forma léxica}</\textbf{lf}> % </\textbf{w}>
+@; \end{alltt}
+@; \end{small}
+
+@; %% \pagebreak
+
+@; La DTD de este flujo de datos para textos \textit{sin desambiguar} es la % que se muestra en la figura~\ref{fg:ambdtd} a continuación.
+
+@; \begin{figure}[here]
+@; \begin{small}
+@; \begin{alltt}
+@;   <!\textsl{ELEMENT} \textbf{document} (b|w|\textsl{#PCDATA})*>
+@;   <!-- atención, el #PCDATA anterior sigue siendo necesario para los 
+@;        carácteres no etiquetados y que no forman parte del formato -->
+@;   <!\textsl{ELEMENT} \textbf{b} (\textsl{#PCDATA}?)>
+@;   <!\textsl{ATTLIST} b filename \textsl{CDATA} \textsl{#IMPLIED}>
+@;   <!\textsl{ELEMENT} \textbf{w} (sf,lf+)>
+@;   <!\textsl{ELEMENT} \textbf{sf} (\textsl{#PCDATA})>
+@;   <!\textsl{ELEMENT} \textbf{lf} (\textsl{#PCDATA}|s)+>
+@;   <!\textsl{ELEMENT} \textbf{s} \textsl{EMPTY}>
+@;   <!\textsl{ATTLIST} s n \textsl{IDREF #REQUIRED}>
+@; \end{alltt}
+@; \end{small}
+@; \caption{DTD para textos no desambiguados con formato XML}
+@; \label{fg:ambdtd}
+@; \end{figure}
 
 
-% Para los ya \textit{ desambiguados}, los textos deben cumplir la DTD de la figura~\ref{fg:desambdtd}.
-
-% \begin{alltt}
-%   <!\textsl{ELEMENT} \textbf{document} (b|w|\textsl{#PCDATA})*>
-%   <!-- atención, el #PCDATA anterior sigue siendo necesario para los 
-%        carácteres no etiquetados y que no forman parte del formato -->
-%   <!\textsl{ELEMENT} \textbf{b} (\textsl{#PCDATA}?)>
-%   <!\textsl{ATTLIST} b filename \textsl{CDATA} \textsl{#IMPLIED}>
-%   <!\textsl{ELEMENT} \textbf{w} (lf)>
-%   <!\textsl{ELEMENT} \textbf{lf} (\textsl{#PCDATA}|s)+>
-%   <!\textsl{ELEMENT} \textbf{s} \textsl{EMPTY}>
-%   <!\textsl{ATTLIST} s n \textsl{IDREF #REQUIRED}>
-% \end{alltt}
-% \end{small}
-% \caption{DTD para textos desambiguados con formato XML}
-% \label{fg:desambdtd}
-% \end{figure}
-
-% La figura~\ref{fg:docorigXML2} muestra un ejemplo de segmentación del flujo
-% que incluye la forma de encapsular el formato y la información léxica.  Este
-% ejemplo es para el caso de flujo segmentado ambiguo y corresponde al texto
-% HTML original de la figura~\ref{fg:docorig}. 
-
-% \begin{figure}[htbp]
-% \begin{small}
-% \begin{alltt}
-% <?\textbf{xml} \textsl{version}="1.0" \textsl{encoding}="iso-8859-15"?>
-% <document>
-% <\textbf{b}><![CDATA[<html>
-%   <head>
-%     <title>]]></\textbf{b}>
-% <\textbf{w}>
-%   <\textbf{sf}>Título<\textbf{sf}>
-%   <\textbf{lf}>Título<\textbf{s} \textsl{n}="n"/><\textbf{s} \textsl{n}="m"/><\textbf{s} \textsl{n}="sg"/></\textbf{lf}>
-% </\textbf{w}>
-% <\textbf{w}>
-%   <\textbf{sf}>.</\textbf{sf}>
-%   <\textbf{lf}>.<s n="sent"/></\textbf{lf}>
-% </\textbf{w}><\textbf{b}/>
-% <\textbf{b}><![CDATA[</title>
-%   </head>
-%   <body>
-%     <p>]]></\textbf{b}>
-% <\textbf{w}>
-%   <\textbf{sf}>Frase</\textbf{sf}>
-%   <\textbf{lf}>Frase<s n="n"/><s n="f"/><s n="sg"/></\textbf{lf}>
-% </\textbf{w}>
-% <\textbf{b}><![CDATA[
-%        ]]></\textbf{b}>
-% <\textbf{w}>
-%   <\textbf{sf}>dividida</\textbf{sf}>
-%   <\textbf{lf}>dividir<s n="vblex"/><s n="pp"/><s n="f"/><s n="sg"/></\textbf{lf}>
-% </\textbf{w}>
-% <\textbf{w}>
-%   <\textbf{sf}>.</\textbf{sf}>
-%   <\textbf{lf}>.<s n="sent"/></\textbf{lf}>
-% </\textbf{w}><\textbf{b}/>
-% <\textbf{b}><![CDATA[
-%   </body>
-% <html>]]></\textbf{b}>
-% </document>
-% \end{alltt}
-% \end{small}
-% \caption{Ejemplo de flujo segmentado con el formato encapsulado en XML,
-%   correspondiente al documento HTML de la figura~\ref{fg:docorig}.} 
-% \label{fg:docorigXML2}
-% \end{figure}
-%\subsection{Formato no XML}
-%\subsubsection{Formato de flujo}
-\label{se:noxml2} The symbols '\verb!^!' for word beginning and
-'\verb!$!' for word end are used to delimit \textit{words}, as shown
-in this example:
-
-\begin{small}
-\begin{alltt} 
-  \verb!^!\textit{word}\verb!$!
-\end{alltt}
-\end{small}
-
-To separate the \textit{surface form} and the following
-\textit{lexical forms}, the symbol \texttt{/} is used.  This separator
-only has sense in the ambiguous segmented stream, since in the
-unambiguous stream there is only the lexical form.  It is used as
-follows:
-
-\begin{small}
-\begin{alltt} 
-  \verb!^!\textit{surface form}/\textit{lexical form 1}/...\verb!$!
-\end{alltt}
-\end{small}
-
-Lexical forms can include symbols (generally located at the end), as
-shown in the example of Figure \ref{fg:docorigtext2}.
 
 
-\begin{figure}
-\begin{small}
-\begin{alltt}
+@; Para los ya \textit{ desambiguados}, los textos deben cumplir la DTD de la figura~\ref{fg:desambdtd}.
+
+@; \begin{alltt}
+@;   <!\textsl{ELEMENT} \textbf{document} (b|w|\textsl{#PCDATA})*>
+@;   <!-- atención, el #PCDATA anterior sigue siendo necesario para los 
+@;        carácteres no etiquetados y que no forman parte del formato -->
+@;   <!\textsl{ELEMENT} \textbf{b} (\textsl{#PCDATA}?)>
+@;   <!\textsl{ATTLIST} b filename \textsl{CDATA} \textsl{#IMPLIED}>
+@;   <!\textsl{ELEMENT} \textbf{w} (lf)>
+@;   <!\textsl{ELEMENT} \textbf{lf} (\textsl{#PCDATA}|s)+>
+@;   <!\textsl{ELEMENT} \textbf{s} \textsl{EMPTY}>
+@;   <!\textsl{ATTLIST} s n \textsl{IDREF #REQUIRED}>
+@; \end{alltt}
+@; \end{small}
+@; \caption{DTD para textos desambiguados con formato XML}
+@; \label{fg:desambdtd}
+@; \end{figure}
+
+@; La figura~\ref{fg:docorigXML2} muestra un ejemplo de segmentación del flujo
+@; que incluye la forma de encapsular el formato y la información léxica.  Este
+@; ejemplo es para el caso de flujo segmentado ambiguo y corresponde al texto
+@; HTML original de la figura~\ref{fg:docorig}. 
+
+@; \begin{figure}[htbp]
+@; \begin{small}
+@; \begin{alltt}
+@; <?\textbf{xml} \textsl{version}="1.0" \textsl{encoding}="iso-8859-15"?>
+@; <document>
+@; <\textbf{b}><![CDATA[<html>
+@;   <head>
+@;     <title>]]></\textbf{b}>
+@; <\textbf{w}>
+@;   <\textbf{sf}>Título<\textbf{sf}>
+@;   <\textbf{lf}>Título<\textbf{s} \textsl{n}="n"/><\textbf{s} \textsl{n}="m"/><\textbf{s} \textsl{n}="sg"/></\textbf{lf}>
+@; </\textbf{w}>
+@; <\textbf{w}>
+@;   <\textbf{sf}>.</\textbf{sf}>
+@;   <\textbf{lf}>.<s n="sent"/></\textbf{lf}>
+@; </\textbf{w}><\textbf{b}/>
+@; <\textbf{b}><![CDATA[</title>
+@;   </head>
+@;   <body>
+@;     <p>]]></\textbf{b}>
+@; <\textbf{w}>
+@;   <\textbf{sf}>Frase</\textbf{sf}>
+@;   <\textbf{lf}>Frase<s n="n"/><s n="f"/><s n="sg"/></\textbf{lf}>
+@; </\textbf{w}>
+@; <\textbf{b}><![CDATA[
+@;        ]]></\textbf{b}>
+@; <\textbf{w}>
+@;   <\textbf{sf}>dividida</\textbf{sf}>
+@;   <\textbf{lf}>dividir<s n="vblex"/><s n="pp"/><s n="f"/><s n="sg"/></\textbf{lf}>
+@; </\textbf{w}>
+@; <\textbf{w}>
+@;   <\textbf{sf}>.</\textbf{sf}>
+@;   <\textbf{lf}>.<s n="sent"/></\textbf{lf}>
+@; </\textbf{w}><\textbf{b}/>
+@; <\textbf{b}><![CDATA[
+@;   </body>
+@; <html>]]></\textbf{b}>
+@; </document>
+@; \end{alltt}
+@; \end{small}
+@; \caption{Ejemplo de flujo segmentado con el formato encapsulado en XML,
+@;   correspondiente al documento HTML de la figura~\ref{fg:docorig}.} 
+@; \label{fg:docorigXML2}
+@; \end{figure}
+@;\subsection{Formato no XML}
+@;\subsubsection{Formato de flujo}
+@;\label{se:noxml2}
+
+The symbols @tt{^} for word beginning and @tt{$} for word end are used to
+delimit @italic{words}, as shown in this example:
+
+@verbatim{
+^word$
+}
+
+To separate the @italic{surface form} and the following @italic{lexical forms},
+the symbol @tt{/} is used. This separator only has sense in the ambiguous
+segmented stream, since in the unambiguous stream there is only the lexical
+form. It is used as follows:
+
+@verbatim{
+^surface form/lexical form 1/...$
+}
+
+Lexical forms can include symbols (generally located at the end), as shown in
+the example of @Figure-ref{fg:docorigtext2}.
+
+@figure["fg:docorigtext2" @elem{Example of segmented stream with format
+encapsulated in non-XML format, corresponding to the HTML document in
+@Figure-ref{fg:docorig}.} #:style left-figure-style
+
+@verbatim{
 [<html> 
    <head> 
-     <title>]^Title/Title<n><m><sg>\$^./.<sent>\$[][</title>
+     <title>]^Title/Title<n><m><sg>$^./.<sent>$[][</title>
    </head>
    <body> 
-     <p>]^Divided/Divide<vblex><pp>/Divided<vblex><past>\$[
-        ]^sentence/sentence<n><sg>/sentence<vblex><inf>\$^./.\\<sent>\$[][</p>
+     <p>]^Divided/Divide<vblex><pp>/Divided<vblex><past>$[
+        ]^sentence/sentence<n><sg>/sentence<vblex><inf>$^./.<sent>$[][</p>
   </body> 
 <html>]
-\end{alltt}
-\end{small}
-\caption{Example of segmented stream with format encapsulated in
-non-XML format, corresponding to the HTML document in Figure
-~\ref{fg:docorig}.}
-\label{fg:docorigtext2}
-\end{figure}
+}
+
+]

@@ -71,149 +71,19 @@ each word and it does not include the surface form. This is the format in which
 data circulate from the part-of-speech tagger to the transfer module, and from
 this module to the generator (see diagram \ref{eq:formaanalizada2} in
 page~\pageref{formaanalizada2} for a detailed description of the format of
-unambiguous segmented stream).</p></li></ul><p>Furthermore, besides the information already marked in the data stream
-without format, the new stream has to enable marking of the following
-information:</p><p>\begin{itemize}
-\item \textit{Lexical units}.  A lexical unit is made of a surface
-form (in the case of ambiguous segmented stream) plus one or more
-lexical forms (the different possible analyses of the SF) with their
-grammatical symbols.
-\item \textit{Surface forms (ambiguous segmented stream)}.  The word
-as it appears in the original text.
-\item \textit{Lexical forms}.  The lemma of the word and its
-grammatical symbols.
-\item \textit{Grammatical symbols}.  They describe the morphological
-and grammatical attributes of a surface form.
-\end{itemize}</p><p>% \subsection{XML format}</p><p>% Las \textit{palabras} se etiquetan de la forma que se muestra a
-% continuaci&#243;n:</p><p>% \begin{small}
-% \begin{alltt} % &lt;\textbf{w}&gt;\textit{informaci&#243;n de la palabra}&lt;/\textbf{w}&gt;
-% \end{alltt}
-% \end{small}</p><p>% Para el caso del \textit{flujo de datos segmentado ambiguo}, la
-% \textit{forma superficial} se indica en el interior de un elemento
-% \texttt{&lt;\textbf{w}&gt;} mediante el contenido de un &#250;nico elemento
-%\texttt{&lt;\textbf{sf}&gt;}.  A continuaci&#243;n, se sit&#250;an la forma o
-%\textit{formas l&#233;xicas} que sean necesarias:</p><p>% \begin{small}
-% \begin{alltt} % &lt;\textbf{w}&gt; % &lt;\textbf{sf}&gt;\textit{forma superficial}&lt;/\textbf{sf}&gt;
-% &lt;\textbf{lf}&gt;\textit{forma l&#233;xica 1}&lt;/\textbf{lf}&gt;
-% &lt;\textbf{lf}&gt;\textit{forma l&#233;xica 2 (opcional)}&lt;/\textbf{lf}&gt;
-% ...  % &lt;/\textbf{w}&gt;
-% \end{alltt}
-% \end{small}</p><p>% Para el caso del flujo no ambiguo, s&#243;lo se especifica una &#250;nica forma l&#233;xica.</p><p>% \begin{small}
-% \begin{alltt} % &lt;\textbf{w}&gt; % &lt;\textbf{lf}&gt;\textit{forma l&#233;xica}&lt;/\textbf{lf}&gt; % &lt;/\textbf{w}&gt;
-% \end{alltt}
-% \end{small}</p><p>% %% \pagebreak</p><p>% La DTD de este flujo de datos para textos \textit{sin desambiguar} es la % que se muestra en la figura~\ref{fg:ambdtd} a continuaci&#243;n.</p><p>% \begin{figure}[here]
-% \begin{small}
-% \begin{alltt}
-%   &lt;!\textsl{ELEMENT} \textbf{document} (b|w|\textsl{#PCDATA})*&gt;
-%   &lt;!&ndash; atenci&#243;n, el #PCDATA anterior sigue siendo necesario para los
-%        car&#225;cteres no etiquetados y que no forman parte del formato &ndash;&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{b} (\textsl{#PCDATA}?)&gt;
-%   &lt;!\textsl{ATTLIST} b filename \textsl{CDATA} \textsl{#IMPLIED}&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{w} (sf,lf+)&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{sf} (\textsl{#PCDATA})&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{lf} (\textsl{#PCDATA}|s)+&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{s} \textsl{EMPTY}&gt;
-%   &lt;!\textsl{ATTLIST} s n \textsl{IDREF #REQUIRED}&gt;
-% \end{alltt}
-% \end{small}
-% \caption{DTD para textos no desambiguados con formato XML}
-% \label{fg:ambdtd}
-% \end{figure}</p><p>% Para los ya \textit{ desambiguados}, los textos deben cumplir la DTD de la figura~\ref{fg:desambdtd}.</p><p>% \begin{alltt}
-%   &lt;!\textsl{ELEMENT} \textbf{document} (b|w|\textsl{#PCDATA})*&gt;
-%   &lt;!&ndash; atenci&#243;n, el #PCDATA anterior sigue siendo necesario para los
-%        car&#225;cteres no etiquetados y que no forman parte del formato &ndash;&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{b} (\textsl{#PCDATA}?)&gt;
-%   &lt;!\textsl{ATTLIST} b filename \textsl{CDATA} \textsl{#IMPLIED}&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{w} (lf)&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{lf} (\textsl{#PCDATA}|s)+&gt;
-%   &lt;!\textsl{ELEMENT} \textbf{s} \textsl{EMPTY}&gt;
-%   &lt;!\textsl{ATTLIST} s n \textsl{IDREF #REQUIRED}&gt;
-% \end{alltt}
-% \end{small}
-% \caption{DTD para textos desambiguados con formato XML}
-% \label{fg:desambdtd}
-% \end{figure}</p><p>% La figura~\ref{fg:docorigXML2} muestra un ejemplo de segmentaci&#243;n del flujo
-% que incluye la forma de encapsular el formato y la informaci&#243;n l&#233;xica.  Este
-% ejemplo es para el caso de flujo segmentado ambiguo y corresponde al texto
-% HTML original de la figura~\ref{fg:docorig}.</p><p>% \begin{figure}[htbp]
-% \begin{small}
-% \begin{alltt}
-% &lt;?\textbf{xml} \textsl{version}="1.0" \textsl{encoding}="iso-8859-15"?&gt;
-% &lt;document&gt;
-% &lt;\textbf{b}&gt;&lt;![CDATA[&lt;html&gt;
-%   &lt;head&gt;
-%     &lt;title&gt;]]&gt;&lt;/\textbf{b}&gt;
-% &lt;\textbf{w}&gt;
-%   &lt;\textbf{sf}&gt;T&#237;tulo&lt;\textbf{sf}&gt;
-%   &lt;\textbf{lf}&gt;T&#237;tulo&lt;\textbf{s} \textsl{n}="n"/&gt;&lt;\textbf{s} \textsl{n}="m"/&gt;&lt;\textbf{s} \textsl{n}="sg"/&gt;&lt;/\textbf{lf}&gt;
-% &lt;/\textbf{w}&gt;
-% &lt;\textbf{w}&gt;
-%   &lt;\textbf{sf}&gt;.&lt;/\textbf{sf}&gt;
-%   &lt;\textbf{lf}&gt;.&lt;s n="sent"/&gt;&lt;/\textbf{lf}&gt;
-% &lt;/\textbf{w}&gt;&lt;\textbf{b}/&gt;
-% &lt;\textbf{b}&gt;&lt;![CDATA[&lt;/title&gt;
-%   &lt;/head&gt;
-%   &lt;body&gt;
-%     &lt;p&gt;]]&gt;&lt;/\textbf{b}&gt;
-% &lt;\textbf{w}&gt;
-%   &lt;\textbf{sf}&gt;Frase&lt;/\textbf{sf}&gt;
-%   &lt;\textbf{lf}&gt;Frase&lt;s n="n"/&gt;&lt;s n="f"/&gt;&lt;s n="sg"/&gt;&lt;/\textbf{lf}&gt;
-% &lt;/\textbf{w}&gt;
-% &lt;\textbf{b}&gt;&lt;![CDATA[
-%        ]]&gt;&lt;/\textbf{b}&gt;
-% &lt;\textbf{w}&gt;
-%   &lt;\textbf{sf}&gt;dividida&lt;/\textbf{sf}&gt;
-%   &lt;\textbf{lf}&gt;dividir&lt;s n="vblex"/&gt;&lt;s n="pp"/&gt;&lt;s n="f"/&gt;&lt;s n="sg"/&gt;&lt;/\textbf{lf}&gt;
-% &lt;/\textbf{w}&gt;
-% &lt;\textbf{w}&gt;
-%   &lt;\textbf{sf}&gt;.&lt;/\textbf{sf}&gt;
-%   &lt;\textbf{lf}&gt;.&lt;s n="sent"/&gt;&lt;/\textbf{lf}&gt;
-% &lt;/\textbf{w}&gt;&lt;\textbf{b}/&gt;
-% &lt;\textbf{b}&gt;&lt;![CDATA[
-%   &lt;/body&gt;
-% &lt;html&gt;]]&gt;&lt;/\textbf{b}&gt;
-% &lt;/document&gt;
-% \end{alltt}
-% \end{small}
-% \caption{Ejemplo de flujo segmentado con el formato encapsulado en XML,
-%   correspondiente al documento HTML de la figura~\ref{fg:docorig}.}
-% \label{fg:docorigXML2}
-% \end{figure}
-%\subsection{Formato no XML}
-%\subsubsection{Formato de flujo}
-\label{se:noxml2} The symbols &rsquo;\verb!^!&rsquo; for word beginning and
-&rsquo;\verb!$!&rsquo; for word end are used to delimit \textit{words}, as shown
-in this example:</p><p>\begin{small}
-\begin{alltt}
-  \verb!^!\textit{word}\verb!$!
-\end{alltt}
-\end{small}</p><p>To separate the \textit{surface form} and the following
-\textit{lexical forms}, the symbol \texttt{/} is used.  This separator
-only has sense in the ambiguous segmented stream, since in the
-unambiguous stream there is only the lexical form.  It is used as
-follows:</p><p>\begin{small}
-\begin{alltt}
-  \verb!^!\textit{surface form}/\textit{lexical form 1}/...\verb!$!
-\end{alltt}
-\end{small}</p><p>Lexical forms can include symbols (generally located at the end), as
-shown in the example of Figure \ref{fg:docorigtext2}.</p><p>\begin{figure}
-\begin{small}
-\begin{alltt}
-[&lt;html&gt;
-   &lt;head&gt;
-     &lt;title&gt;]^Title/Title&lt;n&gt;&lt;m&gt;&lt;sg&gt;\$^./.&lt;sent&gt;\$[][&lt;/title&gt;
-   &lt;/head&gt;
-   &lt;body&gt;
-     &lt;p&gt;]^Divided/Divide&lt;vblex&gt;&lt;pp&gt;/Divided&lt;vblex&gt;&lt;past&gt;\$[
-        ]^sentence/sentence&lt;n&gt;&lt;sg&gt;/sentence&lt;vblex&gt;&lt;inf&gt;\$^./.\\&lt;sent&gt;\$[][&lt;/p&gt;
-  &lt;/body&gt;
-&lt;html&gt;]
-\end{alltt}
-\end{small}
-\caption{Example of segmented stream with format encapsulated in
-non-XML format, corresponding to the HTML document in Figure
-~\ref{fg:docorig}.}
-\label{fg:docorigtext2}
-\end{figure}</p><div class="navsetbottom"><span class="navleft"><form class="searchform"><input class="searchbox" style="color: #888;" type="text" tabindex="1" value="...search manuals..." title="Enter a search string to search the manuals" onkeypress="return DoSearchKey(event, this, &quot;7.7&quot;, &quot;../&quot;);" onfocus="this.style.color=&quot;black&quot;; this.style.textAlign=&quot;left&quot;; if (this.value == &quot;...search manuals...&quot;) this.value=&quot;&quot;;" onblur="if (this.value.match(/^ *$/)) { this.style.color=&quot;#888&quot;; this.style.textAlign=&quot;center&quot;; this.value=&quot;...search manuals...&quot;; }"/></form>&nbsp;&nbsp;<a href="../index.html" title="up to the documentation top" data-pltdoc="x" onclick="return GotoPLTRoot(&quot;7.7&quot;);">top</a></span><span class="navright">&nbsp;&nbsp;<a href="engine.html" title="backward to &quot;2 The shallow-transfer machine
+unambiguous segmented stream).</p></li></ul><p>Furthermore, besides the information already marked in the data stream without
+format, the new stream has to enable marking of the following information:</p><ul><li><p><span style="font-style: italic">Lexical units</span>. A lexical unit is made of a surface form (in the
+case of ambiguous segmented stream) plus one or more lexical forms (the
+different possible analyses of the SF) with their grammatical symbols.</p></li><li><p><span style="font-style: italic">Surface forms (ambiguous segmented stream)</span>. The word as it
+appears in the original text.</p></li><li><p><span style="font-style: italic">Lexical forms</span>. The lemma of the word and its grammatical
+symbols.</p></li><li><p><span style="font-style: italic">Grammatical symbols</span>. They describe the morphological and
+grammatical attributes of a surface form.</p></li></ul><p>The symbols <span class="stt">^</span> for word beginning and <span class="stt">$</span> for word end are used to
+delimit <span style="font-style: italic">words</span>, as shown in this example:</p><p><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="stt">^word$</span></p></td></tr></table></p><p>To separate the <span style="font-style: italic">surface form</span> and the following <span style="font-style: italic">lexical forms</span>,
+the symbol <span class="stt">/</span> is used. This separator only has sense in the ambiguous
+segmented stream, since in the unambiguous stream there is only the lexical
+form. It is used as follows:</p><p><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="stt">^surface form/lexical form 1/...$</span></p></td></tr></table></p><p>Lexical forms can include symbols (generally located at the end), as shown in
+the example of <a href="#%28counter._%28figure._fg~3adocorigtext2%29%29" data-pltdoc="x">Figure&nbsp;<span class="FigureRef">5</span></a>.</p><blockquote class="Figure"><blockquote class="Leftfigure"><blockquote class="FigureInside"><table cellspacing="0" cellpadding="0" class="SVerbatim"><tr><td><p><span class="stt">[&lt;html&gt;</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;</span><span class="stt">&lt;head&gt;</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&lt;title&gt;]^Title/Title&lt;n&gt;&lt;m&gt;&lt;sg&gt;$^./.&lt;sent&gt;$[][&lt;/title&gt;</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;</span><span class="stt">&lt;/head&gt;</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;</span><span class="stt">&lt;body&gt;</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">&lt;p&gt;]^Divided/Divide&lt;vblex&gt;&lt;pp&gt;/Divided&lt;vblex&gt;&lt;past&gt;$[</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="stt">]^sentence/sentence&lt;n&gt;&lt;sg&gt;/sentence&lt;vblex&gt;&lt;inf&gt;$^./.&lt;sent&gt;$[][&lt;/p&gt;</span></p></td></tr><tr><td><p><span class="stt"></span><span class="hspace">&nbsp;&nbsp;</span><span class="stt">&lt;/body&gt;</span></p></td></tr><tr><td><p><span class="stt">&lt;html&gt;]</span></p></td></tr></table></blockquote></blockquote><p class="Centertext"><span class="Legend"><span class="FigureTarget"><a name="(counter._(figure._fg~3adocorigtext2))" x-target-lift="Figure"></a>Figure&nbsp;5: </span>Example of segmented stream with format
+encapsulated in non-XML format, corresponding to the HTML document in
+<a href="#%28counter._%28figure._fg~3adocorig%29%29" data-pltdoc="x">Figure&nbsp;<span class="FigureRef">3</span></a>.</span></p></blockquote><div class="navsetbottom"><span class="navleft"><form class="searchform"><input class="searchbox" style="color: #888;" type="text" tabindex="1" value="...search manuals..." title="Enter a search string to search the manuals" onkeypress="return DoSearchKey(event, this, &quot;7.7&quot;, &quot;../&quot;);" onfocus="this.style.color=&quot;black&quot;; this.style.textAlign=&quot;left&quot;; if (this.value == &quot;...search manuals...&quot;) this.value=&quot;&quot;;" onblur="if (this.value.match(/^ *$/)) { this.style.color=&quot;#888&quot;; this.style.textAlign=&quot;center&quot;; this.value=&quot;...search manuals...&quot;; }"/></form>&nbsp;&nbsp;<a href="../index.html" title="up to the documentation top" data-pltdoc="x" onclick="return GotoPLTRoot(&quot;7.7&quot;);">top</a></span><span class="navright">&nbsp;&nbsp;<a href="engine.html" title="backward to &quot;2 The shallow-transfer machine
 translation engine&quot;" data-pltdoc="x">&larr; prev</a>&nbsp;&nbsp;<a href="index.html" title="up to &quot;Documentation of the Open-Source Shallow-Transfer
 Machine-Translation Platform Apertium&quot;" data-pltdoc="x">up</a>&nbsp;&nbsp;<a href="modules.html" title="forward to &quot;4 Modules specification&quot;" data-pltdoc="x">next &rarr;</a></span>&nbsp;</div></div></div><div id="contextindicator">&nbsp;</div></body></html>
