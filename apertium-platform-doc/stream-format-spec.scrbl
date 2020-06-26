@@ -1,6 +1,7 @@
 #lang scribble/manual
 
 @(require scriblib/figure
+          "references.rkt"
           "util.rkt")
 
 @title[#:tag "stream-format" #:version "3.5.2"]{Format specification of the
@@ -187,8 +188,8 @@ format.}
 @subsection[#:tag "noxml1"]{Stream format}
 
 This format is based on the one used in the machine translation systems
-@tt{interNOSTRUM} \cite{canals01b,garridoalenda01p,garrido99j} and
-@tt{Traductor Universia} \cite{garrido03p, gilabert03j}.
+@tt{interNOSTRUM} @~cite[canals01b]@~cite[garridoalenda01p]@~cite[garrido99j]
+and @tt{Traductor Universia} @~cite[garrido03p]@~cite[gilabert03j].
 
 In this stream type, the characters @tt{[} and @tt{]} are used to indicate
 @italic{superblanks}, as shown in the following example:

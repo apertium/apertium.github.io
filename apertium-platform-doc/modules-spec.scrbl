@@ -1,52 +1,63 @@
 #lang scribble/manual
 
-@(require scriblib/figure)
+@(require scriblib/figure
+          "references.rkt"
+	  "util.rkt")
 
 @title[#:tag "modules" #:version "3.5.2"]{Modules specification}
 
-@section{Lexical processing modules}
-\label{ss:modproclex}
+@section[#:tag "ss:modproclex"]{Lexical processing modules}
 
-\subsection{Module description }
-\label{ss:funcproclex}
+@subsection[#:tag "ss:funcproclex"]{Module description}
 
-One of the most efficient approaches to lexical processing is based on
-the use of finite-state transducers (FST)
-\cite{mohri97a,roche97b}. FST are a type of finite-state automata,
-which may be used as one-pass morphological analysers and generators
-and may be very efficiently implemented. In this project, we have used
-a class of FST called letter-transducers
-\cite{roche97b,garrido02a,garrido99j}; in fact, any finite-state
+One of the most efficient approaches to lexical processing is based on the use
+of finite-state transducers (FST) \cite[mohri97a]\cite[roche97b]. FST are a
+type of finite-state automata, which may be used as one-pass morphological
+analysers and generators and may be very efficiently implemented. In this
+project, we have used a class of FST called letter-transducers
+@~cite[roche97]\cite[garrido02a]@~cite[garrido99j]; in fact, any finite-state
 transducer may always be turned into a letter-transducer. Garrido and
-collaborators \cite{garrido99j,garrido02a} give a formal definition of
-the letter transducers used in this project; describing them
-informally, a letter-transducer is an idealised machine consisting of:
-\begin{enumerate}
+collaborators @~cite[garrido99j]\cite[garrido02a] give a formal definition of
+the letter transducers used in this project; describing them informally, a
+letter-transducer is an idealised machine consisting of:
 
-\item A (finite) set of states, that is, of situations in which the
-transducer can be while it is reading, from left to right, the input
-letters or symbols. Among the states of the set, we can distinguish:
+@itemlist[#:style 'ordered
 
-\begin{enumerate}
-\item A single initial state: this is the state in which the
-transducer is before processing the first letter or the first symbol
-of the input.
-\item One or more acceptance states, which are only reached after
+@item{A (finite) set of states, that is, of situations in which the transducer
+can be while it is reading, from left to right, the input letters or
+symbols. Among the states of the set, we can distinguish:
+
+@itemlist[#:style 'ordered
+
+@item{A single initial state: this is the state in which the transducer is
+before processing the first letter or the first symbol of the input.}
+
+@item{One or more acceptance states, which are only reached after
 having completely read a valid entry and, therefore, are used to
-detect valid words.
-\end{enumerate}
-\item A set (also finite) of state transitions consisting of:
-\begin{enumerate}
-\item the origin state
-\item the destination state
-\item the input letter or symbol
-\item the output letter or symbol
-\end{enumerate} To make possible that input and output have different
-lengths at any time, it is allowed that there is no input symbol, that
-there is no output symbol or that there is neither input nor output
-symbol. This case is generally represented using a special symbol (the
-empty symbol).
-\end{enumerate}
+detect valid words.}
+
+]}
+
+@item{A set (also finite) of state transitions consisting of:
+
+@itemlist[#:style 'ordered
+
+@item{the origin state}
+
+@item{the destination state}
+
+@item{the input letter or symbol}
+
+@item{the output letter or symbol}
+
+]
+
+To make @red{it} possible that input and output have different lengths at any
+time, it is allowed that there is no input symbol, that there is no output
+symbol or that there is neither input nor output symbol. This case is generally
+represented using a special symbol (the empty symbol).
+
+}]
 
 Every time the transducer reads an entry symbol, it creates a list of
 \emph{live} or \emph{active} states, each one of which has an
