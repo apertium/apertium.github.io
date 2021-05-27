@@ -22,8 +22,8 @@ refer also to the Valencian dialectal variant of this language.},
 Catalan-Occitan, Catalan-French, and can be used to build translators between
 other related language pairs, such as Danish-Swedish, Czech-Slovak, etc.}
 @red{50 pairs have been released and are considered to be stable. They are
-listed on the @hyperlink["http://wiki.apertium.org"]{wiki} of the project and
-are showcased on @hyperlink["https://www.apertium.org"]{www.apertium.org}. Even
+listed on the @hyperlink["https://wiki.apertium.org"]{wiki} of the project and
+are showcased on @hyperlink["https://apertium.org"]{apertium.org}. Even
 more translators -- in the beta stage of development -- can be found on
 @hyperlink["https://beta.apertium.org"]{beta.apertium.org}.}
 
@@ -151,7 +151,7 @@ this page you can download the packages needed for installation, as well as
 view the individual files in the @sout{SVN (main) and CVS (residual)}
 repositories of the project. The machine translation systems for the different
 language pairs can also be tested on the Internet at
-@hyperlink["https://www.apertium.org/"]{https://www.apertium.org/}
+@hyperlink["https://apertium.org/"]{https://apertium.org/}
 @red{(released versions) or
 @hyperlink["https://beta.apertium.org"]{https://beta.apertium.org} (nightly
 versions). Besides translation modes proper, the latter website also allows to

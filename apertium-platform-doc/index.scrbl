@@ -49,7 +49,7 @@ here}. The LaTeX source file is archived on
 Sourceforge}.
 
 In addition, there is a lot of information on the
-@hyperlink["http://wiki.apertium.org"]{wiki} of the project.
+@hyperlink["https://wiki.apertium.org"]{wiki} of the project.
 
 The goal of this document is two-fold:
 

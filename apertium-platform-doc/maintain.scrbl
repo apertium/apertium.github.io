@@ -1388,7 +1388,7 @@ incomprehensible text string.  These are linguistic errors, which can
 be detected and corrected with the tips given in this chapter. The
 following information is for Linux users, since Apertium works for the
 moment only in this operating system.\footnote{There are in
-\url{http://apertium.org} experimental packages for Windows with fixed
+\url{https://apertium.org} experimental packages for Windows with fixed
 linguistic data (non-modifiable binary files).}
 
 \subsection{Adjusting error symbols}
